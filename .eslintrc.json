@@ -9,6 +9,7 @@
     "max-len": ["error", 140],
     "quotes": [2, "single", { "avoidEscape": true }],
     "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
+    "no-console": "warn"
   }
 }
