@@ -11,6 +11,9 @@
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
     "no-console": "warn",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "react/function-component-definition": "off",
+    "prefer-arrow-callback": ["error", { "allowNamedFunctions": false }],
+    "prefer-const": ["error", { "destructuring": "all" }]
   }
 }
