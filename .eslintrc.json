@@ -1,5 +1,11 @@
 {
-  "extends": ["next/core-web-vitals", "airbnb", "plugin:prettier/recommended"],
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "plugin:prettier/recommended",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
