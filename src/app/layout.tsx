@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { ReactNode } from "react";
-
-const inter = Inter({ subsets: ["latin"] });
+import fontPrimary from "./fonts";
 
 export const metadata: Metadata = {
   title: "MovieHub",
@@ -18,7 +16,7 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${fontPrimary.className} antialiased`}>{children}</body>
     </html>
   );
 }
