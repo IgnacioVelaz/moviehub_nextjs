@@ -1,9 +1,10 @@
-import Link from "next/link";
 import Image from "next/image";
 import Container from "../container/container";
+import NavLinks from "./components/nav-links";
+import UserIcon from "./components/user-icon";
 
 const NavBar = () => (
-  <header className="bg-primary text-white">
+  <header className="text-white">
     <Container>
       <div className="flex justify-between items-center py-2">
         <div className="logo">
@@ -14,32 +15,8 @@ const NavBar = () => (
             height={25}
           />
         </div>
-        <ul className="flex items-center gap-5">
-          <li>
-            <Link
-              href="/watchlist"
-              className="font-semibold text-gray-300 hover:text-white"
-            >
-              Watchlist
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/watched"
-              className="font-semibold text-gray-300 hover:text-white"
-            >
-              Watched
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/add"
-              className="font-semibold text-gray-300 hover:text-white"
-            >
-              Add Movie
-            </Link>
-          </li>
-        </ul>
+        <NavLinks />
+        <UserIcon />
       </div>
     </Container>
   </header>
