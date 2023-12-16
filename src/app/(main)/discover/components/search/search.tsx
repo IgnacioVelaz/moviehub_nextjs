@@ -9,11 +9,13 @@ const Search = () => {
 
   const [results, setResults] = useState<TmdbMovie[]>([]);
 
+  const apiKey = process.env.TMDB_KEY;
+
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     setQuery(event.target.value);
     fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=6b4c90e3639bb74749774b61e3804b42&language=en-US&page=1&include_adult=false&query=${event.target.value}`,
+      `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=1&include_adult=false&query=${event.target.value}`,
     )
       .then((res) => res.json())
       .then((data) => {
