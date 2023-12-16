@@ -10,13 +10,13 @@ const NavLinks = () => {
   const links = [
     { name: "Watchlist", href: "/watchlist" },
     { name: "Watched", href: "/watched" },
-    { name: "Add Movie", href: "/add" },
+    { name: "Discover", href: "/discover" },
   ];
 
   return (
     <ul className="flex items-center gap-5">
       {links.map((link) => (
-        <li>
+        <li key={link.name}>
           <Link
             key={link.name}
             href={link.href}

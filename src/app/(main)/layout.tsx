@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import NavBar from "../components/navbar.tsx/navbar";
-import Container from "../components/container/container";
+import NavBar from "@/components/navbar.tsx/navbar";
+import Container from "@/components/container/container";
 
 type layoutProps = {
   children: ReactNode;

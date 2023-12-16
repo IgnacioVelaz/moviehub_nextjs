@@ -1,12 +1,15 @@
-import Container from "./components/container/container";
+import Container from "@/components/container/container";
+import Image from "next/image";
 
 const Login = () => (
   <div>
     <div className="bg-primary flex justify-center p-4 mb-24">
-      <img
+      <Image
         src="https://res.cloudinary.com/dsinhkkv3/image/upload/v1700480644/Artboard_1_d1n7j7.png"
         alt="moviehub logo"
         className="h-36"
+        height={120}
+        width={220}
       />
     </div>
     <Container>
@@ -20,9 +23,11 @@ const Login = () => (
             <span className="text-3xl">Join for free</span>
           </a>
         </div>
-        <img
+        <Image
           src="https://res.cloudinary.com/dsinhkkv3/image/upload/v1700475281/Artboard_1_2x_bftnvr.png"
           alt="Popcorn"
+          height={500}
+          width={500}
         />
       </div>
     </Container>
@@ -32,10 +37,12 @@ const Login = () => (
           Powerful search feature! No more guesswork. Just search, click, and
           conquer!
         </p>
-        <img
+        <Image
           className="h-48 m-auto"
           src="https://res.cloudinary.com/dsinhkkv3/image/upload/v1700477121/search_illustration_mizmnk.png"
           alt="Search"
+          width={192}
+          height={192}
         />
       </div>
 
@@ -44,10 +51,12 @@ const Login = () => (
           Add, organize, and curate your movie picks. Your watchlist, your
           rules!
         </p>
-        <img
+        <Image
           className="h-60 m-auto"
           src="https://res.cloudinary.com/dsinhkkv3/image/upload/v1700477121/list_illustration_k6ntg3.png"
           alt="Search"
+          width={240}
+          height={240}
         />
       </div>
 
@@ -56,10 +65,12 @@ const Login = () => (
           Proudly move movies to your watched list. Because life&apos;s too
           short to miss a good movie. Mark it, watch it, conquer it!
         </p>
-        <img
+        <Image
           className="h-60 m-auto"
           src="https://res.cloudinary.com/dsinhkkv3/image/upload/v1700477121/pedestal_illustration_l4hfur.png"
           alt="Search"
+          height={240}
+          width={240}
         />
       </div>
 
@@ -68,10 +79,12 @@ const Login = () => (
           Unify your watchlist from all streaming platforms into one harmonious
           hub.
         </p>
-        <img
+        <Image
           className="h-60 m-auto"
           src="https://res.cloudinary.com/dsinhkkv3/image/upload/v1700477183/movies_illustration_a0qvz0.png"
           alt="Search"
+          height={240}
+          width={240}
         />
       </div>
     </Container>
