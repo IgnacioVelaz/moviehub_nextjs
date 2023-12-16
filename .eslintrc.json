@@ -6,12 +6,13 @@
     "sourceType": "module"
   },
   "rules": {
-    "max-len": ["error", 140],
+    "max-len": ["error", 160],
     "quotes": [2, "single", { "avoidEscape": true }],
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
     "no-console": "warn",
     "import/extensions": "off",
+    "import/prefer-default-export": "off",
     "react/function-component-definition": "off",
     "prefer-arrow-callback": ["error", { "allowNamedFunctions": false }],
     "prefer-const": ["error", { "destructuring": "all" }]
