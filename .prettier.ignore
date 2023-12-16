@@ -6,3 +6,4 @@ node_modules
 .next.config.json
 package.json
 pnpm-lock.yaml
+README.md

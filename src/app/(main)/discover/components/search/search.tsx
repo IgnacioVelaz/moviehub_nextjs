@@ -2,10 +2,12 @@
 
 import { ChangeEvent, useState } from "react";
 import { SearchMovieCard } from "../search-movie-card";
+import { TmdbMovie } from "../../models";
 
 const Search = () => {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
+
+  const [results, setResults] = useState<TmdbMovie[]>([]);
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
