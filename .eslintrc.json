@@ -15,7 +15,9 @@
     "import/prefer-default-export": "off",
     "react/function-component-definition": "off",
     "prefer-arrow-callback": ["error", { "allowNamedFunctions": false }],
+    "react/require-default-props": "off",
     "prefer-const": ["error", { "destructuring": "all" }],
+    "import/no-relative-packages": "off",
     "no-restricted-globals": [
       "off",
       {

@@ -3,7 +3,7 @@
 import { Pagination, A11y, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { TmdbMovie } from "../../models";
-import MovieCard from "../movie-card";
+import MovieCard from "../movie-card/movie-card";
 
 import "swiper/css";
 import "swiper/css/pagination";

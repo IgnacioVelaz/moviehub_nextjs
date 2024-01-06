@@ -3,16 +3,19 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: 'https://api.themoviedb.org',
+        hostname: "https://api.themoviedb.org",
       },
       {
-        hostname: 'themoviedb.org',
+        hostname: "themoviedb.org",
       },
       {
-        hostname: 'lh3.googleusercontent.com',
+        hostname: "lh3.googleusercontent.com",
       },
       {
-        hostname: 'res.cloudinary.com',
+        hostname: "res.cloudinary.com",
+      },
+      {
+        hostname: "s.gravatar.com",
       },
     ],
   },
