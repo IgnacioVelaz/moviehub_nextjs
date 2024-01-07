@@ -7,7 +7,7 @@ export interface MovieInterfaceDB {
   poster_image: string;
   score: number;
   genres: GenreType[];
-  id: string | number;
+  id: string;
   tmdb_id: number;
   type: "watchlist" | "watched";
 }

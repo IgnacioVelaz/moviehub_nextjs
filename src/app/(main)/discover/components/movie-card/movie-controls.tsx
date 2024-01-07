@@ -12,11 +12,17 @@ import {
 } from "@/services/movie.service";
 import { useRouter } from "next/navigation";
 import { ControlButton } from "../buttons/buttons";
+import { TmdbMovie } from "../../models";
 
-type MovieControlsProps = {
-  movie: MovieInterfaceDB;
-  type: "watchlist" | "watched" | "tmdb";
-};
+type MovieControlsProps =
+  | {
+      movie: MovieInterfaceDB;
+      type: "watchlist" | "watched";
+    }
+  | {
+      movie: TmdbMovie;
+      type: "tmdb";
+    };
 
 const MovieControls: FC<MovieControlsProps> = ({ movie, type }) => {
   const router = useRouter();
