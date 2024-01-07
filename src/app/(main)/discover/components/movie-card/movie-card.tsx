@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import Image from "next/image";
 import { TmdbMovie } from "../../models";
+import MovieControls from "./movie-controls";
 
 type Props = {
   movie: TmdbMovie;
@@ -33,6 +34,7 @@ const MovieCard: FC<Props> = ({ movie }) => {
           </h5>
         </div>
       </div>
+      <MovieControls movie={movie} type="tmdb" />
     </div>
   );
 };
