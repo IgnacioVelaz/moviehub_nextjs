@@ -1,5 +1,6 @@
 "use server";
 
+import { tmdbToMongoGenresIds } from "@/utils/tmdbToMongoGenresIds";
 import { getUserByEmail } from "./user.service";
 import { PrismaClient } from "../../prisma/generated/mongodb_client";
 
@@ -50,3 +51,34 @@ export const deleteMovieById = async (movieId: string) => {
 
   return deletedMovie;
 };
+
+/* eslint-disable camelcase */
+export const addMovie = async (data) => {
+  const { name, poster_image, score, tmdb_id, tmdb_genresIds, type } = data;
+  const user = await getUserByEmail();
+  const userId = user?.props.user.id;
+  const genres = tmdbToMongoGenresIds(tmdb_genresIds);
+
+  const newMovie = await prisma.movies.create({
+    data: {
+      tmdb_id,
+      name,
+      poster_image,
+      score,
+      type,
+      tmdb_genresIds: tmdb_genresIds.map((genreId: number) => genreId),
+      genres: {
+        connect: genres.map((genre: string) => ({
+          id: genre,
+        })),
+      },
+      user: { connect: { id: userId } },
+    },
+  });
+
+  if (newMovie) return newMovie;
+  if (!newMovie) return "Can't add movie right now";
+  return null;
+};
+
+/* eslint-enable camelcase */

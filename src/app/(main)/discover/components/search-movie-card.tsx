@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { addMovie } from "@/services/movie.service";
 import { TmdbMovie } from "../models";
 
 type Props = {
@@ -41,10 +42,10 @@ export const SearchMovieCard = ({ movie }: Props) => {
                 poster_image: moviePoster,
                 type: "watchlist",
               };
-              console.log(formattedMovie);
+              addMovie(formattedMovie);
             }}
           >
-            {status === "pending" ? "Adding movie..." : "Add to watchlist"}
+            Add to Watchlist
           </button>
 
           <button
@@ -58,10 +59,10 @@ export const SearchMovieCard = ({ movie }: Props) => {
                 poster_image: moviePoster,
                 type: "watched",
               };
-              console.log(formattedMovie);
+              addMovie(formattedMovie);
             }}
           >
-            {status === "pending" ? "Adding movie..." : "Add to watched"}
+            Add to Watched
           </button>
         </div>
       </div>
