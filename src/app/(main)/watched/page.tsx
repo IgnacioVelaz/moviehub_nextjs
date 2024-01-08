@@ -5,8 +5,9 @@ import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Link from "next/link";
 
 export default withPageAuthRequired(async () => {
-  const { movies } = await getUserMovies();
-  const watched = movies.filter((movie) => movie.type === "watched");
+  const res = await getUserMovies();
+  const movies = res && res.movies;
+  const watched = movies && movies.filter((movie) => movie.type === "watched");
 
   return (
     <div className="p-8">

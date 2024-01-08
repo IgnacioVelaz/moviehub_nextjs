@@ -10,11 +10,10 @@ export default withPageAuthRequired(async () => {
   const upcomingMovies = await getMovies("upcoming");
   const theaterMovies = await getMovies("now_playing");
 
-  const user = await getUserByEmail();
+  await getUserByEmail();
 
   return (
     <>
-      <pre>{JSON.stringify(user)}</pre>
       <Search />
       <Carousel movies={popularMovies} title="Popular" />
       <Carousel movies={topRatedMovies} title="Top Rated" />
