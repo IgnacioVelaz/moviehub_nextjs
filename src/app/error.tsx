@@ -14,9 +14,9 @@ export default function Error({ error, reset }: ErrorProps) {
 
   return (
     <div>
-      <h2>Ups, Something went wrong!</h2>
+      <h2>Ups, Something went wrong</h2>
       <button type="button" onClick={() => reset()}>
-        Try again
+        Try again.
       </button>
     </div>
   );
