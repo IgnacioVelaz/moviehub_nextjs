@@ -1,4 +1,3 @@
-import { getUserByEmail } from "@/services/user.service";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Carousel from "./components/carousel/Carousel";
 import Search from "./components/search/search";
@@ -9,8 +8,6 @@ export default withPageAuthRequired(async () => {
   const topRatedMovies = await getMovies("top_rated");
   const upcomingMovies = await getMovies("upcoming");
   const theaterMovies = await getMovies("now_playing");
-
-  await getUserByEmail();
 
   return (
     <>
