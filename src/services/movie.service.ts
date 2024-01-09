@@ -1,6 +1,7 @@
 "use server";
 
 import { tmdbToMongoGenresIds } from "@/utils/tmdbToMongoGenresIds";
+import { FormattedMovie } from "@/app/(main)/discover/models/formatted-movie-model";
 import { getUserByEmail } from "./user.service";
 import { PrismaClient } from "../../prisma/generated/mongodb_client";
 
@@ -8,8 +9,13 @@ const prisma = new PrismaClient();
 
 export const getUserMovies = async () => {
   const user = await getUserByEmail();
+
+  if (!user || !user.props) {
+    return "Can't get user movies";
+  }
+
   const movies = await prisma.user.findUnique({
-    where: { id: user?.props.user.id },
+    where: { id: user.props.user.id },
     select: {
       movies: {
         select: {
@@ -27,7 +33,7 @@ export const getUserMovies = async () => {
     },
   });
 
-  return movies;
+  return movies || "Can't get user movies";
 };
 
 export const editMovieType = async (movieId: string, type: string) => {
@@ -43,41 +49,48 @@ export const editMovieType = async (movieId: string, type: string) => {
 
 export const deleteMovieById = async (movieId: string) => {
   const user = await getUserByEmail();
-  const userId = user?.props.user.id;
+
+  if (!user || !user.props) {
+    return "Can't find user. Please logout and login.";
+  }
+
+  const userId = user.props.user.id;
 
   const deletedMovie = await prisma.movies.delete({
     where: { id: movieId, userId },
   });
 
-  return deletedMovie;
+  return deletedMovie || "Can't delete movie";
 };
 
 /* eslint-disable camelcase */
-export const addMovie = async (data) => {
+export const addMovie = async (data: FormattedMovie) => {
   const { name, poster_image, score, tmdb_id, tmdb_genresIds, type } = data;
   const user = await getUserByEmail();
-  const userId = user?.props.user.id;
-  const genres = tmdbToMongoGenresIds(tmdb_genresIds);
+  if (user && user.props) {
+    const userId = user.props.user.id;
+    const genres = tmdbToMongoGenresIds(tmdb_genresIds);
 
-  const newMovie = await prisma.movies.create({
-    data: {
-      tmdb_id,
-      name,
-      poster_image,
-      score,
-      type,
-      tmdb_genresIds: tmdb_genresIds.map((genreId: number) => genreId),
-      genres: {
-        connect: genres.map((genre: string) => ({
-          id: genre,
-        })),
+    const newMovie = await prisma.movies.create({
+      data: {
+        tmdb_id,
+        name,
+        poster_image,
+        score,
+        type,
+        tmdb_genresIds: tmdb_genresIds.map((genreId: number) => genreId),
+        genres: {
+          connect: genres.map((genre: string) => ({
+            id: genre,
+          })),
+        },
+        user: { connect: { id: userId } },
       },
-      user: { connect: { id: userId } },
-    },
-  });
+    });
 
-  if (newMovie) return newMovie;
-  if (!newMovie) return "Can't add movie right now";
+    if (newMovie) return newMovie;
+    if (!newMovie) return "Can't add movie right now";
+  }
   return null;
 };
 
