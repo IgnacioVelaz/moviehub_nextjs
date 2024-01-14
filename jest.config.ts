@@ -8,6 +8,11 @@ const createJestConfig = nextJest({
 
 // Add any custom config to be passed to Jest
 const config: Config = {
+  moduleNameMapper: {
+    "^jose": "jose",
+    "^@panva/hkdf": require.resolve("@panva/hkdf"),
+  },
+  preset: "ts-jest",
   coverageProvider: "v8",
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],

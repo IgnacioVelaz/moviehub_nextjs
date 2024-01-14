@@ -1,12 +1,7 @@
 import { getSession } from "@auth0/nextjs-auth0";
-import { PrismaClient as PrismaClientType } from "@prisma/client";
 import { PrismaClient } from "../../prisma/generated/mongodb_client";
 
-async function createUser(
-  email: string,
-  name: string,
-  prisma: PrismaClientType,
-) {
+async function createUser(email: string, name: string, prisma: PrismaClient) {
   try {
     if (!name || !email) {
       console.log("missing fields!");
