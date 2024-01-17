@@ -1,5 +1,5 @@
-import MovieCard from "@/app/(main)/discover/components/movie-card/movie-card";
 import { fireEvent, render, screen } from "@testing-library/react";
+import TMDBMovieCard from "../tmdb-movie-card";
 
 jest.mock("next/navigation", () => ({
   useRouter() {
@@ -35,7 +35,7 @@ const mockHandlers = {
 
 describe("Movie card", () => {
   beforeEach(() => {
-    render(<MovieCard movie={mockMovie} handlers={mockHandlers} />);
+    render(<TMDBMovieCard movie={mockMovie} handlers={mockHandlers} />);
   });
 
   describe("Render", () => {

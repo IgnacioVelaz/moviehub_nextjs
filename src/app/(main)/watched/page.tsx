@@ -1,8 +1,8 @@
-import BasicMovieCard from "@/components/basic-movie-card/basicMovieCard";
 import Container from "@/components/container/container";
 import { getUserMovies } from "@/services/movie.service";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Link from "next/link";
+import UserMovieCard from "@/components/user-movie-card/userMovieCard";
 
 export default withPageAuthRequired(async () => {
   const res = await getUserMovies();
@@ -25,7 +25,7 @@ export default withPageAuthRequired(async () => {
         {watched && watched.length > 0 ? (
           <div className="grid grid-cols-3 gap-8 md:grid-cols-4 lg:grid-cols-5">
             {watched.map((movie) => (
-              <BasicMovieCard movie={movie} />
+              <UserMovieCard movie={movie} />
             ))}
           </div>
         ) : (

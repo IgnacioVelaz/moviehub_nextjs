@@ -1,6 +1,6 @@
 "use client";
 
-import MovieControls from "@/app/(main)/discover/components/movie-card/movie-controls";
+import MovieControls from "@/app/(main)/discover/components/tmdb-movie-card/movie-controls";
 import movieFunctions from "@/utils/movieFunctions";
 import { FC } from "react";
 
@@ -8,7 +8,7 @@ type MovieCardProps = {
   movie: any;
 };
 
-const BasicMovieCard: FC<MovieCardProps> = ({ movie }) => (
+const UserMovieCard: FC<MovieCardProps> = ({ movie }) => (
   <div
     className="w-full rounded-md overflow-hidden relative group"
     key={movie.tmdb_id}
@@ -25,4 +25,4 @@ const BasicMovieCard: FC<MovieCardProps> = ({ movie }) => (
     <MovieControls movie={movie} handlers={movieFunctions} />
   </div>
 );
-export default BasicMovieCard;
+export default UserMovieCard;

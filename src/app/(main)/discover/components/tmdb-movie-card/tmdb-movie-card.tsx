@@ -8,7 +8,6 @@ type Props = {
   movie: TmdbMovie;
   handlers: {
     /* eslint-disable no-unused-vars */
-
     moveMovie: (
       movieId: string,
       type: "watchlist" | "watched",
@@ -24,7 +23,7 @@ type Props = {
   };
 };
 
-const MovieCard: FC<Props> = ({ movie, handlers }) => {
+const TMDBMovieCard: FC<Props> = ({ movie, handlers }) => {
   const moviePoster = movie.poster_path
     ? `https://themoviedb.org/t/p/w200${movie.poster_path}`
     : "https://res.cloudinary.com/dsinhkkv3/image/upload/c_thumb,w_200,g_face/v1700430158/unavailable_g9q1zp.jpg";
@@ -55,4 +54,4 @@ const MovieCard: FC<Props> = ({ movie, handlers }) => {
   );
 };
 
-export default MovieCard;
+export default TMDBMovieCard;
