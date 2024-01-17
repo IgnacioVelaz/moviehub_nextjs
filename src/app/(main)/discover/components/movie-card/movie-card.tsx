@@ -1,13 +1,30 @@
 import React, { FC } from "react";
 import Image from "next/image";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { TmdbMovie } from "../../models";
 import MovieControls from "./movie-controls";
 
 type Props = {
   movie: TmdbMovie;
+  handlers: {
+    /* eslint-disable no-unused-vars */
+
+    moveMovie: (
+      movieId: string,
+      type: "watchlist" | "watched",
+      router: AppRouterInstance,
+    ) => void;
+    addMovieToList: (
+      movie: TmdbMovie,
+      type: "watched" | "watchlist",
+      router: AppRouterInstance,
+    ) => void;
+    deleteMovie: (movieId: string, router: AppRouterInstance) => void;
+    /* eslint-enable no-unused-vars */
+  };
 };
 
-const MovieCard: FC<Props> = ({ movie }) => {
+const MovieCard: FC<Props> = ({ movie, handlers }) => {
   const moviePoster = movie.poster_path
     ? `https://themoviedb.org/t/p/w200${movie.poster_path}`
     : "https://res.cloudinary.com/dsinhkkv3/image/upload/c_thumb,w_200,g_face/v1700430158/unavailable_g9q1zp.jpg";
@@ -33,8 +50,9 @@ const MovieCard: FC<Props> = ({ movie }) => {
           </h5>
         </div>
       </div>
-      <MovieControls movie={movie} type="tmdb" />
+      <MovieControls movie={movie} handlers={handlers} />
     </div>
   );
 };
+
 export default MovieCard;

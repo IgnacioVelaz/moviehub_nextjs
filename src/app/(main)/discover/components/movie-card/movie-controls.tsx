@@ -5,49 +5,56 @@ import { FaEyeSlash } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
 import { FC } from "react";
 import { MovieInterfaceDB } from "@/interfaces/MovieInterfaceDB";
-import {
-  addMovie,
-  deleteMovieById,
-  editMovieType,
-} from "@/services/movie.service";
 import { useRouter } from "next/navigation";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { ControlButton } from "../buttons/buttons";
 import { TmdbMovie } from "../../models";
 
-type MovieControlsProps =
-  | {
-      movie: MovieInterfaceDB;
-      type: "watchlist" | "watched";
-    }
-  | {
-      movie: TmdbMovie;
-      type: "tmdb";
-    };
+type MovieControlsProps = {
+  movie: MovieInterfaceDB | TmdbMovie;
+  /* eslint-disable no-unused-vars */
+  handlers: {
+    moveMovie: (
+      movieId: string,
+      type: "watchlist" | "watched",
+      router: AppRouterInstance,
+    ) => void;
+    addMovieToList: (
+      movie: TmdbMovie,
+      type: "watched" | "watchlist",
+      router: AppRouterInstance,
+    ) => void;
+    deleteMovie: (movieId: string, router: AppRouterInstance) => void;
+  };
+  /* eslint-enable no-unused-vars */
+};
 
-const MovieControls: FC<MovieControlsProps> = ({ movie, type }) => {
+const isMovieInterfaceDB = (
+  movie: MovieInterfaceDB | TmdbMovie,
+): movie is MovieInterfaceDB => (movie as MovieInterfaceDB).type !== undefined;
+
+const MovieControls: FC<MovieControlsProps> = ({ movie, handlers }) => {
   const router = useRouter();
-  const moviePoster =
-    type === "tmdb" && movie.poster_path
-      ? `https://themoviedb.org/t/p/w200${movie.poster_path}`
-      : "https://res.cloudinary.com/dsinhkkv3/image/upload/c_thumb,w_200,g_face/v1700430158/unavailable_g9q1zp.jpg";
+
+  const type = isMovieInterfaceDB(movie) ? movie.type : "tmdb";
+
+  const { addMovieToList, deleteMovie, moveMovie } = handlers;
 
   return (
     <div className="absolute bottom-5 inline left-1/2 -translate-x-1/2 bg-black/50 rounded-md p-1 border border-white/60 opacity-0 transition-all group-hover:opacity-100">
-      {type === "watchlist" && (
+      {isMovieInterfaceDB(movie) && (
         <>
           <ControlButton
             onClick={() => {
-              editMovieType(movie.id, "watched");
-              router.refresh();
+              moveMovie(movie.id, movie.type, router);
             }}
           >
-            <FaEye />
+            {type === "watchlist" ? <FaEye /> : <FaEyeSlash />}
           </ControlButton>
 
           <ControlButton
             onClick={() => {
-              deleteMovieById(movie.id);
-              router.refresh();
+              deleteMovie(movie.id, router);
             }}
           >
             <IoCloseSharp />
@@ -55,58 +62,20 @@ const MovieControls: FC<MovieControlsProps> = ({ movie, type }) => {
         </>
       )}
 
-      {type === "watched" && (
+      {!isMovieInterfaceDB(movie) && (
         <>
           <ControlButton
+            ariaLabel="add to watchlist"
             onClick={() => {
-              editMovieType(movie.id, "watchlist");
-              router.refresh();
-            }}
-          >
-            <FaEyeSlash />
-          </ControlButton>
-
-          <ControlButton
-            onClick={() => {
-              deleteMovieById(movie.id);
-              router.refresh();
-            }}
-          >
-            <IoCloseSharp />
-          </ControlButton>
-        </>
-      )}
-
-      {type === "tmdb" && (
-        <>
-          <ControlButton
-            onClick={() => {
-              const formattedMovie = {
-                tmdb_id: movie.id,
-                name: movie.title,
-                score: movie.vote_average,
-                tmdb_genresIds: movie.genre_ids,
-                poster_image: moviePoster,
-                type: "watchlist",
-              };
-              addMovie(formattedMovie);
-              router.refresh();
+              addMovieToList(movie, "watchlist", router);
             }}
           >
             <FaEyeSlash />
           </ControlButton>
           <ControlButton
+            ariaLabel="add to watched"
             onClick={() => {
-              const formattedMovie = {
-                tmdb_id: movie.id,
-                name: movie.title,
-                score: movie.vote_average,
-                tmdb_genresIds: movie.genre_ids,
-                poster_image: moviePoster,
-                type: "watched",
-              };
-              addMovie(formattedMovie);
-              router.refresh();
+              addMovieToList(movie, "watched", router);
             }}
           >
             <FaEye />
