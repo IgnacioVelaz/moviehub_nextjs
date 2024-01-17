@@ -2,7 +2,7 @@ import Container from "@/components/container/container";
 import { getUserMovies } from "@/services/movie.service";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Link from "next/link";
-import UserMovieCard from "@/components/user-movie-card/userMovieCard";
+import MoviesGrid from "@/components/movies-grid/movies-grid";
 
 export default withPageAuthRequired(async () => {
   const res = await getUserMovies();
@@ -23,11 +23,7 @@ export default withPageAuthRequired(async () => {
           </h1>
         </div>
         {watched && watched.length > 0 ? (
-          <div className="grid grid-cols-3 gap-8 md:grid-cols-4 lg:grid-cols-5">
-            {watched.map((movie) => (
-              <UserMovieCard movie={movie} />
-            ))}
-          </div>
+          <MoviesGrid movies={watched} />
         ) : (
           <>
             <h2 className="text-gray-500 text-3xl text-center mb-40">

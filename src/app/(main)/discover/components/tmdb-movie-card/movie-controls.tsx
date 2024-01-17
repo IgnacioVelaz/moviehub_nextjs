@@ -48,11 +48,15 @@ const MovieControls: FC<MovieControlsProps> = ({ movie, handlers }) => {
             onClick={() => {
               moveMovie(movie.id, movie.type, router);
             }}
+            ariaLabel={
+              type === "watchlist" ? "Move to watched" : "Move to watchlist"
+            }
           >
             {type === "watchlist" ? <FaEye /> : <FaEyeSlash />}
           </ControlButton>
 
           <ControlButton
+            ariaLabel="Delete movie"
             onClick={() => {
               deleteMovie(movie.id, router);
             }}
