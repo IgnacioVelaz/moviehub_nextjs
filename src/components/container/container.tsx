@@ -1,10 +1,6 @@
-import { FC, ReactNode } from "react";
+import { FC, PropsWithChildren } from "react";
 
-type ContainerProps = {
-  children: ReactNode;
-};
-
-const Container: FC<ContainerProps> = ({ children }) => (
+const Container: FC<PropsWithChildren> = ({ children }) => (
   <div className="px-4 m-auto w-11/12 xl:w-[1170px] ">{children}</div>
 );
 

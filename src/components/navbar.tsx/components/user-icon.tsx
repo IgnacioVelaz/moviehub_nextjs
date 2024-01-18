@@ -11,7 +11,7 @@ const UserIcon = async () => {
       <Image
         src={picture}
         alt={nickname}
-        className="rounded-full w-8"
+        className="rounded-full w-8 "
         width={60}
         height={60}
       />

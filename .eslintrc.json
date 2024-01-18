@@ -23,5 +23,19 @@
         "name": "status"
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["jest.setup.ts"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
+    },
+    {
+      "files": ["*.test.tsx"],
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ]
 }

@@ -18,7 +18,7 @@ const Search = () => {
   };
 
   return (
-    <div className="py-12 max-w-[600px] mx-auto">
+    <div className="py-12 max-w-[600px] mx-auto pt-16">
       <div>
         <input
           type="text"

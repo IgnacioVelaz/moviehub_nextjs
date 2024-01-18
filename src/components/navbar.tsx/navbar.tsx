@@ -2,6 +2,7 @@ import Image from "next/image";
 import Container from "../container/container";
 import NavLinks from "./components/nav-links";
 import UserIcon from "./components/user-icon";
+import LogoutBtn from "./components/logout-btn";
 
 const NavBar = () => (
   <header className="text-white">
@@ -16,7 +17,10 @@ const NavBar = () => (
           />
         </div>
         <NavLinks />
-        <UserIcon />
+        <div className="flex items-center relative">
+          <UserIcon />
+          <LogoutBtn />
+        </div>
       </div>
     </Container>
   </header>

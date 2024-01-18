@@ -9,5 +9,5 @@ export interface MovieInterfaceDB {
   genres: GenreType[];
   id: string;
   tmdb_id: number;
-  type: "watchlist" | "watched";
+  type: string;
 }
