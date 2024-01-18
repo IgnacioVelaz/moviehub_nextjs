@@ -2,7 +2,6 @@
 
 import { Pagination, A11y, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Link from "next/link";
 import movieFunctions from "@/utils/movieFunctions";
 import { TmdbMovie } from "../../models";
 import TMDBMovieCard from "../tmdb-movie-card/tmdb-movie-card";
@@ -36,9 +35,7 @@ const Carousel = ({ movies, title }: Props) => (
     >
       {movies.map((movie) => (
         <SwiperSlide key={movie.id}>
-          <Link href={`/movie/${movie.id}`}>
-            <TMDBMovieCard movie={movie} handlers={movieFunctions} />
-          </Link>
+          <TMDBMovieCard movie={movie} handlers={movieFunctions} />
         </SwiperSlide>
       ))}
     </Swiper>

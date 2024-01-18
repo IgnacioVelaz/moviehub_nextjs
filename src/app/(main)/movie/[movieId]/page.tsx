@@ -7,7 +7,6 @@ import StarsRating from "./components/stars-rating";
 
 const MoviePage = async ({ params }: { params: { movieId: number } }) => {
   const movieDetails: MovieDetailsInterface = await getMovie(params.movieId);
-  console.log(movieDetails);
 
   const {
     backdrop_path: backdropPath,

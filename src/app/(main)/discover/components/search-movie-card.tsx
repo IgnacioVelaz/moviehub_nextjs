@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { addMovie } from "@/services/movie.service";
+import Link from "next/link";
 import { TmdbMovie } from "../models";
 
 type Props = {
@@ -13,15 +14,17 @@ export const SearchMovieCard = ({ movie }: Props) => {
 
   return (
     <div className="flex mb-5">
-      <div>
-        <Image
-          src={moviePoster}
-          alt={`${movie.title} Poster`}
-          className="w-20 h-auto bg-[#dbdada] rounded-md mr-4 text-transparent"
-          height={60}
-          width={80}
-        />
-      </div>
+      <Link href={`/movie/${movie.id}`}>
+        <div>
+          <Image
+            src={moviePoster}
+            alt={`${movie.title} Poster`}
+            className="w-20 h-auto bg-[#dbdada] rounded-md mr-4 text-transparent"
+            height={60}
+            width={80}
+          />
+        </div>
+      </Link>
       <div className="flex flex-col justify-between">
         <div>
           <h3 className="text-xl font-semibold">{movie.title}</h3>
