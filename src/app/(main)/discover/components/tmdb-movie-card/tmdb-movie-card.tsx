@@ -11,12 +11,12 @@ type Props = {
     /* eslint-disable no-unused-vars */
     moveMovie: (
       movieId: string,
-      type: "watchlist" | "watched",
+      type: string,
       router: AppRouterInstance,
     ) => void;
     addMovieToList: (
       movie: TmdbMovie,
-      type: "watched" | "watchlist",
+      type: string,
       router: AppRouterInstance,
     ) => void;
     deleteMovie: (movieId: string, router: AppRouterInstance) => void;

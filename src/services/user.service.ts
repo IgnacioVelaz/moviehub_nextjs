@@ -1,7 +1,20 @@
 import { getSession } from "@auth0/nextjs-auth0";
+import { UserFromDatabaseType } from "@/interfaces/UserFromDatabaseInterface";
 import { PrismaClient } from "../../prisma/generated/mongodb_client";
 
-async function createUser(email: string, name: string, prisma: PrismaClient) {
+type CreatedUser = {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  email: string;
+  name: string;
+};
+
+async function createUser(
+  email: string,
+  name: string,
+  prisma: PrismaClient,
+): Promise<CreatedUser | null | string> {
   try {
     if (!name || !email) {
       console.log("missing fields!");
@@ -18,14 +31,17 @@ async function createUser(email: string, name: string, prisma: PrismaClient) {
     return newUser;
   } catch (error) {
     console.log(error);
-    return error;
+    return "error";
   }
 }
 
-export async function getUserByEmail() {
+export async function getUserByEmail(): Promise<UserFromDatabaseType | string> {
   const session = await getSession();
-  const userFromSession = session && session.user; // Rename user to avoid shadowing
-  const { email, name }: any = userFromSession; // Use the renamed variable
+  const userFromSession = session && session.user;
+
+  if (!userFromSession) return "User session not available";
+
+  const { email, name } = userFromSession;
   const prisma = new PrismaClient();
 
   try {
@@ -57,18 +73,15 @@ export async function getUserByEmail() {
     if (!userFromDatabase) {
       console.log("User not stored in the database!");
       const createdUser = await createUser(email, name, prisma);
-      return {
-        props: { user: createdUser },
-      };
+      if (createdUser && typeof createdUser !== "string")
+        return {
+          props: { user: createdUser },
+        };
     }
   } catch (error) {
     console.log(error);
-    return {
-      error: "An error occurred",
-    };
+    return "An error occurred";
   }
 
-  return {
-    props: { user: null },
-  };
+  return "An error occurred";
 }

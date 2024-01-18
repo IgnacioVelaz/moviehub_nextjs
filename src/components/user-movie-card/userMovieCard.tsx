@@ -1,11 +1,12 @@
 import MovieControls from "@/app/(main)/discover/components/tmdb-movie-card/movie-controls";
 import { TmdbMovie } from "@/app/(main)/discover/models";
+import { MovieInterfaceDB } from "@/interfaces/MovieInterfaceDB";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import Link from "next/link";
 import { FC } from "react";
 
 type MovieCardProps = {
-  movie: any;
+  movie: MovieInterfaceDB;
   handlers: {
     /* eslint-disable no-unused-vars */
     moveMovie: (
