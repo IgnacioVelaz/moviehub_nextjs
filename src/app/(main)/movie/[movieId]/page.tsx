@@ -3,6 +3,7 @@ import Container from "@/components/container/container";
 import { LuClock9 } from "react-icons/lu";
 import { monthsNames } from "@/utils/monthsNames";
 import { MovieDetailsInterface } from "@/interfaces/MovieDetailsInterface";
+import Image from "next/image";
 import StarsRating from "./components/stars-rating";
 
 const MoviePage = async ({ params }: { params: { movieId: number } }) => {
@@ -28,10 +29,12 @@ const MoviePage = async ({ params }: { params: { movieId: number } }) => {
 
   return (
     <main>
-      <img
+      <Image
         src={`https://image.tmdb.org/t/p/original${backdropPath}`}
-        alt=""
+        alt={`${title} backdrop image`}
         className="absolute top-0 left-0 right-0 h-full object-cover w-full object-top"
+        height={1200}
+        width={1200}
       />
       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent z-10 h-96" />
       <Container>
@@ -77,9 +80,9 @@ const MoviePage = async ({ params }: { params: { movieId: number } }) => {
               </header>
             </section>
             <div className="hidden xl:flex  justify-end min-h-[270px]">
-              <img
+              <Image
                 src={`https://image.tmdb.org/t/p/w342${posterPath}`}
-                alt={`Poster ${title}`}
+                alt={`${title} Poster`}
                 width={180}
                 height={270}
                 className="rounded"

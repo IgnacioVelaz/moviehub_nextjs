@@ -2,6 +2,7 @@ import MovieControls from "@/app/(main)/discover/components/tmdb-movie-card/movi
 import { TmdbMovie } from "@/app/(main)/discover/models";
 import { MovieInterfaceDB } from "@/interfaces/MovieInterfaceDB";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 
@@ -32,10 +33,12 @@ const UserMovieCard: FC<MovieCardProps> = ({ movie, handlers }) => (
     <Link href={`/movie/${movie.tmdb_id}`}>
       <div className="absolute top-0 left-0 w-full h-full border-2 border-solid border-transparent transition-all group-hover:border-secondary" />
       {movie.poster_image && (
-        <img
+        <Image
           src={`${movie.poster_image}`}
           alt={`${movie.name} Poster`}
           className="w-full h-auto bg-[#dbdada] rounded-md mr-4 text-transparent mb-2"
+          height={307}
+          width={198}
         />
       )}
     </Link>
