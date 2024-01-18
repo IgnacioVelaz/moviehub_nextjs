@@ -1,8 +1,9 @@
 import { MovieInterfaceDB } from "@/interfaces/MovieInterfaceDB";
-import { FC } from "react";
+import { FC, Suspense, lazy } from "react";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { TmdbMovie } from "@/app/(main)/discover/models";
-import UserMovieCard from "../user-movie-card/userMovieCard";
+
+const UserMovieCard = lazy(() => import("../user-movie-card/userMovieCard"));
 
 type Props = {
   movies: MovieInterfaceDB[];
@@ -26,7 +27,9 @@ type Props = {
 const MoviesGrid: FC<Props> = ({ movies, handlers }) => (
   <div className="grid grid-cols-3 gap-8 md:grid-cols-4 lg:grid-cols-5">
     {movies.map((movie) => (
-      <UserMovieCard movie={movie} handlers={handlers} />
+      <Suspense fallback="Loading...">
+        <UserMovieCard movie={movie} handlers={handlers} />
+      </Suspense>
     ))}
   </div>
 );

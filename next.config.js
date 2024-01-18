@@ -17,6 +17,9 @@ const nextConfig = {
       {
         hostname: "s.gravatar.com",
       },
+      {
+        hostname: "image.tmdb.org",
+      },
     ],
   },
 };
