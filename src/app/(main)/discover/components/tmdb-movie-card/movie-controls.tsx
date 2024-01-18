@@ -1,5 +1,3 @@
-"use client";
-
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
@@ -16,12 +14,12 @@ type MovieControlsProps = {
   handlers: {
     moveMovie: (
       movieId: string,
-      type: "watchlist" | "watched",
+      type: string,
       router: AppRouterInstance,
     ) => void;
     addMovieToList: (
       movie: TmdbMovie,
-      type: "watched" | "watchlist",
+      type: string,
       router: AppRouterInstance,
     ) => void;
     deleteMovie: (movieId: string, router: AppRouterInstance) => void;

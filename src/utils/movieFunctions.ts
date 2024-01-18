@@ -8,11 +8,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 import tmdbToDbMovie from "./tmdbToDbMovie";
 
 const movieFunctions = {
-  moveMovie: (
-    movieId: string,
-    type: "watchlist" | "watched",
-    router: AppRouterInstance,
-  ) => {
+  moveMovie: (movieId: string, type: string, router: AppRouterInstance) => {
     if (type === "watchlist") {
       editMovieType(movieId, "watched");
     }
@@ -29,7 +25,7 @@ const movieFunctions = {
 
   addMovieToList: (
     movie: TmdbMovie,
-    list: "watchlist" | "watched",
+    list: string,
     router: AppRouterInstance,
   ) => {
     const formattedMovie = tmdbToDbMovie(movie, list);

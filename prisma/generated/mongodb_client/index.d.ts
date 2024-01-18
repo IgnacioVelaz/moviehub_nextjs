@@ -222,7 +222,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 5.7.1
-   * Query Engine version: 0a83d8541752d7582de2ebc1ece46519ce72a848
+   * Query Engine version: 78caf6feeaed953168c64e15a249c3e9a033ebe2
    */
   export type PrismaVersion = {
     client: string;
@@ -2473,7 +2473,7 @@ export namespace Prisma {
 
   export type MoviesGroupByOutputType = {
     id: string;
-    tmdb_id: number | null;
+    tmdb_id: number;
     name: string;
     poster_image: string;
     score: number;
@@ -2558,7 +2558,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<
       {
         id: string;
-        tmdb_id: number | null;
+        tmdb_id: number;
         name: string;
         poster_image: string;
         score: number;
@@ -4774,7 +4774,7 @@ export namespace Prisma {
     OR?: MoviesWhereInput[];
     NOT?: MoviesWhereInput | MoviesWhereInput[];
     id?: StringFilter<"Movies"> | string;
-    tmdb_id?: IntNullableFilter<"Movies"> | number | null;
+    tmdb_id?: IntFilter<"Movies"> | number;
     name?: StringFilter<"Movies"> | string;
     poster_image?: StringFilter<"Movies"> | string;
     score?: FloatFilter<"Movies"> | number;
@@ -4811,7 +4811,7 @@ export namespace Prisma {
       AND?: MoviesWhereInput | MoviesWhereInput[];
       OR?: MoviesWhereInput[];
       NOT?: MoviesWhereInput | MoviesWhereInput[];
-      tmdb_id?: IntNullableFilter<"Movies"> | number | null;
+      tmdb_id?: IntFilter<"Movies"> | number;
       poster_image?: StringFilter<"Movies"> | string;
       score?: FloatFilter<"Movies"> | number;
       createdAt?: DateTimeFilter<"Movies"> | Date | string;
@@ -4854,7 +4854,7 @@ export namespace Prisma {
       | MoviesScalarWhereWithAggregatesInput
       | MoviesScalarWhereWithAggregatesInput[];
     id?: StringWithAggregatesFilter<"Movies"> | string;
-    tmdb_id?: IntNullableWithAggregatesFilter<"Movies"> | number | null;
+    tmdb_id?: IntWithAggregatesFilter<"Movies"> | number;
     name?: StringWithAggregatesFilter<"Movies"> | string;
     poster_image?: StringWithAggregatesFilter<"Movies"> | string;
     score?: FloatWithAggregatesFilter<"Movies"> | number;
@@ -4983,7 +4983,7 @@ export namespace Prisma {
 
   export type MoviesCreateInput = {
     id?: string;
-    tmdb_id?: number | null;
+    tmdb_id: number;
     name: string;
     poster_image: string;
     score: number;
@@ -4997,7 +4997,7 @@ export namespace Prisma {
 
   export type MoviesUncheckedCreateInput = {
     id?: string;
-    tmdb_id?: number | null;
+    tmdb_id: number;
     name: string;
     poster_image: string;
     score: number;
@@ -5011,7 +5011,7 @@ export namespace Prisma {
   };
 
   export type MoviesUpdateInput = {
-    tmdb_id?: NullableIntFieldUpdateOperationsInput | number | null;
+    tmdb_id?: IntFieldUpdateOperationsInput | number;
     name?: StringFieldUpdateOperationsInput | string;
     poster_image?: StringFieldUpdateOperationsInput | string;
     score?: FloatFieldUpdateOperationsInput | number;
@@ -5024,7 +5024,7 @@ export namespace Prisma {
   };
 
   export type MoviesUncheckedUpdateInput = {
-    tmdb_id?: NullableIntFieldUpdateOperationsInput | number | null;
+    tmdb_id?: IntFieldUpdateOperationsInput | number;
     name?: StringFieldUpdateOperationsInput | string;
     poster_image?: StringFieldUpdateOperationsInput | string;
     score?: FloatFieldUpdateOperationsInput | number;
@@ -5039,7 +5039,7 @@ export namespace Prisma {
 
   export type MoviesCreateManyInput = {
     id?: string;
-    tmdb_id?: number | null;
+    tmdb_id: number;
     name: string;
     poster_image: string;
     score: number;
@@ -5052,7 +5052,7 @@ export namespace Prisma {
   };
 
   export type MoviesUpdateManyMutationInput = {
-    tmdb_id?: NullableIntFieldUpdateOperationsInput | number | null;
+    tmdb_id?: IntFieldUpdateOperationsInput | number;
     name?: StringFieldUpdateOperationsInput | string;
     poster_image?: StringFieldUpdateOperationsInput | string;
     score?: FloatFieldUpdateOperationsInput | number;
@@ -5063,7 +5063,7 @@ export namespace Prisma {
   };
 
   export type MoviesUncheckedUpdateManyInput = {
-    tmdb_id?: NullableIntFieldUpdateOperationsInput | number | null;
+    tmdb_id?: IntFieldUpdateOperationsInput | number;
     name?: StringFieldUpdateOperationsInput | string;
     poster_image?: StringFieldUpdateOperationsInput | string;
     score?: FloatFieldUpdateOperationsInput | number;
@@ -5213,16 +5213,15 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>;
   };
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>;
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>;
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>;
     lt?: number | IntFieldRefInput<$PrismaModel>;
     lte?: number | IntFieldRefInput<$PrismaModel>;
     gt?: number | IntFieldRefInput<$PrismaModel>;
     gte?: number | IntFieldRefInput<$PrismaModel>;
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null;
-    isSet?: boolean;
+    not?: NestedIntFilter<$PrismaModel> | number;
   };
 
   export type FloatFilter<$PrismaModel = never> = {
@@ -5317,21 +5316,20 @@ export namespace Prisma {
     tmdb_genresIds?: SortOrder;
   };
 
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>;
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>;
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>;
     lt?: number | IntFieldRefInput<$PrismaModel>;
     lte?: number | IntFieldRefInput<$PrismaModel>;
     gt?: number | IntFieldRefInput<$PrismaModel>;
     gte?: number | IntFieldRefInput<$PrismaModel>;
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null;
-    _count?: NestedIntNullableFilter<$PrismaModel>;
-    _avg?: NestedFloatNullableFilter<$PrismaModel>;
-    _sum?: NestedIntNullableFilter<$PrismaModel>;
-    _min?: NestedIntNullableFilter<$PrismaModel>;
-    _max?: NestedIntNullableFilter<$PrismaModel>;
-    isSet?: boolean;
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number;
+    _count?: NestedIntFilter<$PrismaModel>;
+    _avg?: NestedFloatFilter<$PrismaModel>;
+    _sum?: NestedIntFilter<$PrismaModel>;
+    _min?: NestedIntFilter<$PrismaModel>;
+    _max?: NestedIntFilter<$PrismaModel>;
   };
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -5348,17 +5346,6 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>;
     _min?: NestedFloatFilter<$PrismaModel>;
     _max?: NestedFloatFilter<$PrismaModel>;
-  };
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>;
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>;
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>;
-    lt?: number | IntFieldRefInput<$PrismaModel>;
-    lte?: number | IntFieldRefInput<$PrismaModel>;
-    gt?: number | IntFieldRefInput<$PrismaModel>;
-    gte?: number | IntFieldRefInput<$PrismaModel>;
-    not?: NestedIntFilter<$PrismaModel> | number;
   };
 
   export type GenresCountOrderByAggregateInput = {
@@ -5386,22 +5373,6 @@ export namespace Prisma {
 
   export type GenresSumOrderByAggregateInput = {
     tmdb_id?: SortOrder;
-  };
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>;
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>;
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>;
-    lt?: number | IntFieldRefInput<$PrismaModel>;
-    lte?: number | IntFieldRefInput<$PrismaModel>;
-    gt?: number | IntFieldRefInput<$PrismaModel>;
-    gte?: number | IntFieldRefInput<$PrismaModel>;
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number;
-    _count?: NestedIntFilter<$PrismaModel>;
-    _avg?: NestedFloatFilter<$PrismaModel>;
-    _sum?: NestedIntFilter<$PrismaModel>;
-    _min?: NestedIntFilter<$PrismaModel>;
-    _max?: NestedIntFilter<$PrismaModel>;
   };
 
   export type MoviesCreateNestedManyWithoutUserInput = {
@@ -5531,13 +5502,12 @@ export namespace Prisma {
     connect?: GenresWhereUniqueInput | GenresWhereUniqueInput[];
   };
 
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null;
+  export type IntFieldUpdateOperationsInput = {
+    set?: number;
     increment?: number;
     decrement?: number;
     multiply?: number;
     divide?: number;
-    unset?: boolean;
   };
 
   export type FloatFieldUpdateOperationsInput = {
@@ -5659,14 +5629,6 @@ export namespace Prisma {
       | MoviesCreateOrConnectWithoutGenresInput
       | MoviesCreateOrConnectWithoutGenresInput[];
     connect?: MoviesWhereUniqueInput | MoviesWhereUniqueInput[];
-  };
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number;
-    increment?: number;
-    decrement?: number;
-    multiply?: number;
-    divide?: number;
   };
 
   export type MoviesUpdateManyWithoutGenresNestedInput = {
@@ -5795,18 +5757,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>;
   };
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    lt?: number | IntFieldRefInput<$PrismaModel>;
-    lte?: number | IntFieldRefInput<$PrismaModel>;
-    gt?: number | IntFieldRefInput<$PrismaModel>;
-    gte?: number | IntFieldRefInput<$PrismaModel>;
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null;
-    isSet?: boolean;
-  };
-
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>;
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>;
@@ -5816,51 +5766,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>;
     gte?: number | FloatFieldRefInput<$PrismaModel>;
     not?: NestedFloatFilter<$PrismaModel> | number;
-  };
-
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    lt?: number | IntFieldRefInput<$PrismaModel>;
-    lte?: number | IntFieldRefInput<$PrismaModel>;
-    gt?: number | IntFieldRefInput<$PrismaModel>;
-    gte?: number | IntFieldRefInput<$PrismaModel>;
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null;
-    _count?: NestedIntNullableFilter<$PrismaModel>;
-    _avg?: NestedFloatNullableFilter<$PrismaModel>;
-    _sum?: NestedIntNullableFilter<$PrismaModel>;
-    _min?: NestedIntNullableFilter<$PrismaModel>;
-    _max?: NestedIntNullableFilter<$PrismaModel>;
-    isSet?: boolean;
-  };
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null;
-    isSet?: boolean;
-  };
-
-  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number;
-    _count?: NestedIntFilter<$PrismaModel>;
-    _avg?: NestedFloatFilter<$PrismaModel>;
-    _sum?: NestedFloatFilter<$PrismaModel>;
-    _min?: NestedFloatFilter<$PrismaModel>;
-    _max?: NestedFloatFilter<$PrismaModel>;
   };
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -5879,9 +5784,25 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>;
   };
 
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>;
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>;
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>;
+    lt?: number | FloatFieldRefInput<$PrismaModel>;
+    lte?: number | FloatFieldRefInput<$PrismaModel>;
+    gt?: number | FloatFieldRefInput<$PrismaModel>;
+    gte?: number | FloatFieldRefInput<$PrismaModel>;
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number;
+    _count?: NestedIntFilter<$PrismaModel>;
+    _avg?: NestedFloatFilter<$PrismaModel>;
+    _sum?: NestedFloatFilter<$PrismaModel>;
+    _min?: NestedFloatFilter<$PrismaModel>;
+    _max?: NestedFloatFilter<$PrismaModel>;
+  };
+
   export type MoviesCreateWithoutUserInput = {
     id?: string;
-    tmdb_id?: number | null;
+    tmdb_id: number;
     name: string;
     poster_image: string;
     score: number;
@@ -5894,7 +5815,7 @@ export namespace Prisma {
 
   export type MoviesUncheckedCreateWithoutUserInput = {
     id?: string;
-    tmdb_id?: number | null;
+    tmdb_id: number;
     name: string;
     poster_image: string;
     score: number;
@@ -5951,7 +5872,7 @@ export namespace Prisma {
     OR?: MoviesScalarWhereInput[];
     NOT?: MoviesScalarWhereInput | MoviesScalarWhereInput[];
     id?: StringFilter<"Movies"> | string;
-    tmdb_id?: IntNullableFilter<"Movies"> | number | null;
+    tmdb_id?: IntFilter<"Movies"> | number;
     name?: StringFilter<"Movies"> | string;
     poster_image?: StringFilter<"Movies"> | string;
     score?: FloatFilter<"Movies"> | number;
@@ -6082,7 +6003,7 @@ export namespace Prisma {
 
   export type MoviesCreateWithoutGenresInput = {
     id?: string;
-    tmdb_id?: number | null;
+    tmdb_id: number;
     name: string;
     poster_image: string;
     score: number;
@@ -6095,7 +6016,7 @@ export namespace Prisma {
 
   export type MoviesUncheckedCreateWithoutGenresInput = {
     id?: string;
-    tmdb_id?: number | null;
+    tmdb_id: number;
     name: string;
     poster_image: string;
     score: number;
@@ -6145,7 +6066,7 @@ export namespace Prisma {
 
   export type MoviesCreateManyUserInput = {
     id?: string;
-    tmdb_id?: number | null;
+    tmdb_id: number;
     name: string;
     poster_image: string;
     score: number;
@@ -6157,7 +6078,7 @@ export namespace Prisma {
   };
 
   export type MoviesUpdateWithoutUserInput = {
-    tmdb_id?: NullableIntFieldUpdateOperationsInput | number | null;
+    tmdb_id?: IntFieldUpdateOperationsInput | number;
     name?: StringFieldUpdateOperationsInput | string;
     poster_image?: StringFieldUpdateOperationsInput | string;
     score?: FloatFieldUpdateOperationsInput | number;
@@ -6169,7 +6090,7 @@ export namespace Prisma {
   };
 
   export type MoviesUncheckedUpdateWithoutUserInput = {
-    tmdb_id?: NullableIntFieldUpdateOperationsInput | number | null;
+    tmdb_id?: IntFieldUpdateOperationsInput | number;
     name?: StringFieldUpdateOperationsInput | string;
     poster_image?: StringFieldUpdateOperationsInput | string;
     score?: FloatFieldUpdateOperationsInput | number;
@@ -6182,7 +6103,7 @@ export namespace Prisma {
   };
 
   export type MoviesUncheckedUpdateManyWithoutUserInput = {
-    tmdb_id?: NullableIntFieldUpdateOperationsInput | number | null;
+    tmdb_id?: IntFieldUpdateOperationsInput | number;
     name?: StringFieldUpdateOperationsInput | string;
     poster_image?: StringFieldUpdateOperationsInput | string;
     score?: FloatFieldUpdateOperationsInput | number;
@@ -6211,7 +6132,7 @@ export namespace Prisma {
   };
 
   export type MoviesUpdateWithoutGenresInput = {
-    tmdb_id?: NullableIntFieldUpdateOperationsInput | number | null;
+    tmdb_id?: IntFieldUpdateOperationsInput | number;
     name?: StringFieldUpdateOperationsInput | string;
     poster_image?: StringFieldUpdateOperationsInput | string;
     score?: FloatFieldUpdateOperationsInput | number;
@@ -6223,7 +6144,7 @@ export namespace Prisma {
   };
 
   export type MoviesUncheckedUpdateWithoutGenresInput = {
-    tmdb_id?: NullableIntFieldUpdateOperationsInput | number | null;
+    tmdb_id?: IntFieldUpdateOperationsInput | number;
     name?: StringFieldUpdateOperationsInput | string;
     poster_image?: StringFieldUpdateOperationsInput | string;
     score?: FloatFieldUpdateOperationsInput | number;
@@ -6236,7 +6157,7 @@ export namespace Prisma {
   };
 
   export type MoviesUncheckedUpdateManyWithoutGenresInput = {
-    tmdb_id?: NullableIntFieldUpdateOperationsInput | number | null;
+    tmdb_id?: IntFieldUpdateOperationsInput | number;
     name?: StringFieldUpdateOperationsInput | string;
     poster_image?: StringFieldUpdateOperationsInput | string;
     score?: FloatFieldUpdateOperationsInput | number;
