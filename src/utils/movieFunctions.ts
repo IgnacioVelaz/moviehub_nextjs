@@ -5,32 +5,40 @@ import {
   editMovieType,
 } from "@/services/movie.service";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import toast from "react-hot-toast";
 import tmdbToDbMovie from "./tmdbToDbMovie";
 
 const movieFunctions = {
-  moveMovie: (movieId: string, type: string, router: AppRouterInstance) => {
+  moveMovie: async (
+    movieId: string,
+    type: string,
+    router: AppRouterInstance,
+  ) => {
     if (type === "watchlist") {
-      editMovieType(movieId, "watched");
+      await editMovieType(movieId, "watched");
     }
     if (type === "watched") {
-      editMovieType(movieId, "watchlist");
+      await editMovieType(movieId, "watchlist");
     }
-    router.refresh();
+    await router.refresh();
+    toast.success("Movie moved successfully");
   },
 
-  deleteMovie: (movieId: string, router: AppRouterInstance) => {
-    deleteMovieById(movieId);
-    router.refresh();
+  deleteMovie: async (movieId: string, router: AppRouterInstance) => {
+    await deleteMovieById(movieId);
+    await router.refresh();
+    toast.success("Movie deleted successfully");
   },
 
-  addMovieToList: (
+  addMovieToList: async (
     movie: TmdbMovie,
     list: string,
     router: AppRouterInstance,
   ) => {
     const formattedMovie = tmdbToDbMovie(movie, list);
-    addMovie(formattedMovie);
-    router.refresh();
+    const response = await addMovie(formattedMovie);
+    await router.refresh();
+    if (response) toast.success("Movie added successfully");
   },
 };
 

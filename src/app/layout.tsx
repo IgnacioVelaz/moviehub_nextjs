@@ -3,6 +3,7 @@ import "../globals.css";
 import { FC, PropsWithChildren } from "react";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { fontPrimary } from "@/fonts";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "MovieHub",
@@ -17,6 +18,16 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => (
         className={`${fontPrimary.className} antialiased min-h-screen bg-gradient-to-b from-black to-secondary text-white`}
       >
         {children}
+        <Toaster
+          toastOptions={{
+            success: {
+              style: {
+                background: "#282828",
+                color: "#fff",
+              },
+            },
+          }}
+        />
       </body>
     </UserProvider>
   </html>
