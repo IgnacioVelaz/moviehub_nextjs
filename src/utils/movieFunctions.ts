@@ -27,7 +27,7 @@ const movieFunctions = {
   deleteMovie: async (movieId: string, router: AppRouterInstance) => {
     await deleteMovieById(movieId);
     await router.refresh();
-    toast.success("Movie deleted successfully");
+    toast.success("Movie removed successfully");
   },
 
   addMovieToList: async (
@@ -36,9 +36,9 @@ const movieFunctions = {
     router: AppRouterInstance,
   ) => {
     const formattedMovie = tmdbToDbMovie(movie, list);
-    const response = await addMovie(formattedMovie);
+    await addMovie(formattedMovie);
     await router.refresh();
-    if (response) toast.success("Movie added successfully");
+    toast.success("Movie added!");
   },
 };
 

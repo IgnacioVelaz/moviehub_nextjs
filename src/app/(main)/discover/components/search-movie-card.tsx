@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { addMovie } from "@/services/movie.service";
 import Link from "next/link";
+import movieFunctions from "@/utils/movieFunctions";
+import { useRouter } from "next/navigation";
 import { TmdbMovie } from "../models";
 
 type Props = {
@@ -11,6 +12,9 @@ export const SearchMovieCard = ({ movie }: Props) => {
   const moviePoster = movie.poster_path
     ? `https://themoviedb.org/t/p/w200${movie.poster_path}`
     : "https://res.cloudinary.com/dsinhkkv3/image/upload/c_thumb,w_200,g_face/v1700430158/unavailable_g9q1zp.jpg";
+
+  const { addMovieToList } = movieFunctions;
+  const router = useRouter();
 
   return (
     <div className="flex mb-5">
@@ -37,15 +41,7 @@ export const SearchMovieCard = ({ movie }: Props) => {
           <button
             type="button"
             onClick={() => {
-              const formattedMovie = {
-                tmdb_id: movie.id,
-                name: movie.title,
-                score: movie.vote_average,
-                tmdb_genresIds: movie.genre_ids,
-                poster_image: moviePoster,
-                type: "watchlist",
-              };
-              addMovie(formattedMovie);
+              addMovieToList(movie, "watchlist", router);
             }}
           >
             Add to Watchlist
@@ -54,15 +50,7 @@ export const SearchMovieCard = ({ movie }: Props) => {
           <button
             type="button"
             onClick={() => {
-              const formattedMovie = {
-                tmdb_id: movie.id,
-                name: movie.title,
-                score: movie.vote_average,
-                tmdb_genresIds: movie.genre_ids,
-                poster_image: moviePoster,
-                type: "watched",
-              };
-              addMovie(formattedMovie);
+              addMovieToList(movie, "watched", router);
             }}
           >
             Add to Watched
