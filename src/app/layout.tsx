@@ -17,7 +17,6 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => (
         className={`${fontPrimary.className} antialiased min-h-screen bg-gradient-to-b from-black to-secondary text-white`}
       >
         {children}
-        <a href="/api/auth/logout">Logout</a>
       </body>
     </UserProvider>
   </html>
