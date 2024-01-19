@@ -25,7 +25,7 @@ const Carousel = ({ movies, title }: Props) => {
 
   return (
     <>
-      <h2>{title}</h2>
+      {swiperIsLoaded && <h2>{title}</h2>}
       <Swiper
         modules={[Pagination, A11y, Navigation]}
         spaceBetween={10}

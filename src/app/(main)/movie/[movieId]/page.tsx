@@ -4,10 +4,14 @@ import { LuClock9 } from "react-icons/lu";
 import { monthsNames } from "@/utils/monthsNames";
 import { MovieDetailsInterface } from "@/interfaces/MovieDetailsInterface";
 import Image from "next/image";
+import { headers } from "next/headers";
 import StarsRating from "./components/stars-rating";
 
 const MoviePage = async ({ params }: { params: { movieId: number } }) => {
   const movieDetails: MovieDetailsInterface = await getMovie(params.movieId);
+
+  const headersList = headers();
+  const country = headersList.get("country");
 
   const {
     backdrop_path: backdropPath,
@@ -43,6 +47,7 @@ const MoviePage = async ({ params }: { params: { movieId: number } }) => {
           <div className="flex items-center gap-1 relative top-8">
             <StarsRating average={voteAverage} />
             <p>({voteCount})</p>
+            {country && <p>{country}</p>}
           </div>
           <div className="flex w-full justify-between items-end">
             <div className="mb-7">

@@ -17,7 +17,7 @@ const CarouselContainer: FC<CarouselContainerProps> = async ({
 
   return (
     <Suspense fallback={<CarouselSkeletor />}>
-      <Carousel movies={movies} title={title} />{" "}
+      <Carousel movies={movies} title={title} />
     </Suspense>
   );
 };
