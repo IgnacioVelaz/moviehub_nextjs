@@ -7,7 +7,7 @@ type CarouselContainerProps = {
   title: string;
 };
 
-const Carousel = lazy(() => import("./carousel-temp"));
+const Carousel = lazy(() => import("./carousel"));
 
 const CarouselContainer: FC<CarouselContainerProps> = async ({
   type,
