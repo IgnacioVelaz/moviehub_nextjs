@@ -35,6 +35,7 @@ const MoviePage = async ({ params }: { params: { movieId: number } }) => {
         className="absolute top-0 left-0 right-0 h-full object-cover w-full object-top"
         height={1200}
         width={1200}
+        priority
       />
       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent z-10 h-96" />
       <Container>

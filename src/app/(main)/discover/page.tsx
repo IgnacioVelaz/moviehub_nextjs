@@ -1,21 +1,13 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-import Carousel from "./components/carousel/Carousel";
 import Search from "./components/search/search";
-import { getMovies } from "./services";
+import CarouselContainer from "./components/carousel/carousel-container";
 
-export default withPageAuthRequired(async () => {
-  const popularMovies = await getMovies("popular");
-  const topRatedMovies = await getMovies("top_rated");
-  const upcomingMovies = await getMovies("upcoming");
-  const theaterMovies = await getMovies("now_playing");
-
-  return (
-    <>
-      <Search />
-      <Carousel movies={popularMovies} title="Popular" />
-      <Carousel movies={topRatedMovies} title="Top Rated" />
-      <Carousel movies={upcomingMovies} title="Upcoming" />
-      <Carousel movies={theaterMovies} title="On Theaters" />
-    </>
-  );
-});
+export default withPageAuthRequired(async () => (
+  <>
+    <Search />
+    <CarouselContainer type="popular" title="Popular" />
+    <CarouselContainer type="top_rated" title="Top Rated" />
+    <CarouselContainer type="upcoming" title="Upcoming" />
+    <CarouselContainer type="now_playing" title="On Theaters" />
+  </>
+));

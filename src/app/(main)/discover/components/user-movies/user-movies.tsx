@@ -1,10 +1,12 @@
 "use client";
 
-import MoviesGrid from "@/components/movies-grid/movies-grid";
 import Link from "next/link";
 import movieFunctions from "@/utils/movieFunctions";
-import { FC } from "react";
+import { FC, Suspense, lazy } from "react";
 import { MovieInterfaceDB } from "@/interfaces/MovieInterfaceDB";
+import MoviesGridSkeleton from "@/components/movies-grid/movies-grid-skeleton";
+
+const MoviesGrid = lazy(() => import("@/components/movies-grid/movies-grid"));
 
 type Props = {
   movies: MovieInterfaceDB[];
@@ -13,7 +15,9 @@ type Props = {
 const UserMovies: FC<Props> = ({ movies }) => (
   <div>
     {movies && movies.length > 0 ? (
-      <MoviesGrid movies={movies} handlers={movieFunctions} />
+      <Suspense fallback={<MoviesGridSkeleton />}>
+        <MoviesGrid movies={movies} handlers={movieFunctions} />
+      </Suspense>
     ) : (
       <>
         <h2 className="text-gray-500 text-3xl text-center mb-40">
