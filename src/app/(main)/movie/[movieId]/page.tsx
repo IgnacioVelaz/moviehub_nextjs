@@ -10,7 +10,6 @@ import Modal from "@/components/modal/modal";
 import { FC } from "react";
 import { getCountryData } from "@/utils/get-country-data";
 import WhereToWatch from "./components/where-to-watch";
-import Button from "../../discover/components/buttons/buttons";
 import StarsRating from "./components/stars-rating";
 
 type MoviePageProps = {
@@ -25,7 +24,6 @@ const MoviePage: FC<MoviePageProps> = async ({ params, searchParams }) => {
   const headersList = headers();
   const countryCode = headersList.get("country");
   const country = getCountryData(countryCode);
-  const testing = headersList.get("testing");
 
   const {
     backdrop_path: backdropPath,
@@ -49,7 +47,11 @@ const MoviePage: FC<MoviePageProps> = async ({ params, searchParams }) => {
     <>
       {show && (
         <Modal closeLink={`/movie/${params.movieId}/`}>
-          <WhereToWatch movieId={params.movieId} userCountry={country} />
+          <WhereToWatch
+            movieId={params.movieId}
+            userCountry={country}
+            movieTitle={title}
+          />
         </Modal>
       )}
       <main>
@@ -68,7 +70,6 @@ const MoviePage: FC<MoviePageProps> = async ({ params, searchParams }) => {
               <StarsRating average={voteAverage} />
               <p>({voteCount})</p>
               {country && <p>{countryCode}</p>}
-              {testing && <p>{testing}</p>}
             </div>
             <div className="flex w-full justify-between items-end">
               <div className="mb-7">
@@ -92,7 +93,12 @@ const MoviePage: FC<MoviePageProps> = async ({ params, searchParams }) => {
                   </div>
                 </div>
                 <Link href={`/movie/${params.movieId}/?show=true`}>
-                  <Button>Where to Watch</Button>
+                  <button
+                    type="button"
+                    className="border-white border-2 px-4 py-2 w-[80%] uppercase mt-2"
+                  >
+                    Where to Watch
+                  </button>
                 </Link>
               </div>
               <section className="flex justify-between gap-6 mb-7">

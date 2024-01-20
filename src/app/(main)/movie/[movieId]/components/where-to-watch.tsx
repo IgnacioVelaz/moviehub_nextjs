@@ -1,19 +1,29 @@
+import { getStreamingOptions } from "@/app/(main)/discover/services";
 import { UserCountry } from "@/utils/get-country-data";
+import ProvidersList from "./providers-list";
 
 type WhereTowatchProps = {
   userCountry: UserCountry;
   movieId: number;
+  movieTitle: string;
 };
 
-const WhereToWatch = ({ userCountry, movieId }: WhereTowatchProps) => {
+const WhereToWatch = async ({
+  userCountry,
+  movieId,
+  movieTitle,
+}: WhereTowatchProps) => {
   const { name: countryName, code: countryCode } = userCountry;
 
-  console.log(movieId);
+  const streamingOptions = await getStreamingOptions(countryCode, movieId);
 
   return (
     <>
-      <h3>Where to stream in {countryName}</h3>
-      <h2>{countryCode}</h2>
+      <h3 className="text-lg tracking-wide">
+        Where to stream <span className="font-bold">{movieTitle}</span> in
+        <span className="font-bold"> {countryName}</span>
+      </h3>
+      {streamingOptions && <ProvidersList data={streamingOptions} />}
     </>
   );
 };

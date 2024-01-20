@@ -20,6 +20,9 @@ const nextConfig = {
       {
         hostname: "image.tmdb.org",
       },
+      {
+        hostname: "https://image.tmdb.org/",
+      },
     ],
   },
 };

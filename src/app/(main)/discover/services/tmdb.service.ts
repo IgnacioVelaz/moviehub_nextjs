@@ -22,7 +22,7 @@ export const getMovies = (category: string): Promise<TmdbMovie[]> => {
     .then((data) => data.results);
 };
 
-export async function getMovie(id: number) {
+export const getMovie = async (id: number) => {
   try {
     const url = `${baseURL}${id}?api_key=${apiKey}`;
     const response = await fetch(url);
@@ -35,4 +35,24 @@ export async function getMovie(id: number) {
     console.error("Error fetching data:", error);
     throw error;
   }
-}
+};
+
+export const getStreamingOptions = async (
+  countryCode: string,
+  movieId: number,
+) => {
+  try {
+    const url = `${baseURL}${movieId}/watch/providers?api_key=${apiKey}`;
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data. Status: ${response.status}`);
+    }
+    const data = await response.json();
+    if (!data.results[countryCode])
+      return `This movie isn't available for streaming at your current location`;
+    return data.results[countryCode];
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return error;
+  }
+};
