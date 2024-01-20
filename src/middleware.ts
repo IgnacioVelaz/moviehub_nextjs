@@ -3,10 +3,10 @@ import type { NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
   const country = request.geo?.country;
-  const requestHeaders = new Headers(request.headers);
-  if (country) requestHeaders.set("country", country);
+  const response = NextResponse.next();
+  if (country) response.headers.set("country", country);
 
-  return NextResponse.next();
+  return response;
 }
 
 export const config = {

@@ -12,6 +12,7 @@ const MoviePage = async ({ params }: { params: { movieId: number } }) => {
 
   const headersList = headers();
   const country = headersList.get("country");
+  const testing = headersList.get("testing");
 
   const {
     backdrop_path: backdropPath,
@@ -48,6 +49,7 @@ const MoviePage = async ({ params }: { params: { movieId: number } }) => {
             <StarsRating average={voteAverage} />
             <p>({voteCount})</p>
             {country && <p>{country}</p>}
+            {testing && <p>{testing}</p>}
           </div>
           <div className="flex w-full justify-between items-end">
             <div className="mb-7">
