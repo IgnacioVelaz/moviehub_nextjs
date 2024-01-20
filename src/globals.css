@@ -48,6 +48,7 @@ h6 {
 :root {
   --clr-primary: #263238;
   --clr-secondary: #2e0c43;
+  --clr-accent: #753eef;
   --swiper-theme-color: #fff !important;
 }
 

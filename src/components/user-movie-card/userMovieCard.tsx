@@ -27,16 +27,16 @@ type MovieCardProps = {
 
 const UserMovieCard: FC<MovieCardProps> = ({ movie, handlers }) => (
   <div
-    className="w-full rounded-md overflow-hidden relative group"
+    className="w-full rounded-md overflow-hidden relative group outline outline-0 outline-[#753eef] transition-all hover:outline-4"
     key={movie.tmdb_id}
   >
     <Link href={`/movie/${movie.tmdb_id}`}>
-      <div className="absolute top-0 left-0 w-full h-full border-2 border-solid border-transparent transition-all group-hover:border-secondary" />
+      <div className="absolute top-0 left-0 w-full h-full outline outline-2 outline-secondary transition-all group-hover:border-secondary" />
       {movie.poster_image && (
         <Image
           src={`${movie.poster_image}`}
           alt={`${movie.name} Poster`}
-          className="w-full h-auto bg-[#dbdada] rounded-md mr-4 text-transparent mb-2"
+          className="w-full h-auto bg-[#dbdada] rounded-md brightness-[.82] group-hover:brightness-100"
           height={307}
           width={198}
         />

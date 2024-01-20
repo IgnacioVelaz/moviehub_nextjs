@@ -37,7 +37,7 @@ export const ControlButton: FC<ButtonProps> = ({
 }) => (
   <button
     type="button"
-    className="text-white text-xl p-1 transition-all hover:text-secondary hover:cursor-pointer"
+    className="text-white text-xl p-1 transition-all hover:text-accent hover:cursor-pointer"
     onClick={onClick}
     aria-label={ariaLabel}
   >

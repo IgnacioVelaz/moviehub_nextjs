@@ -10,6 +10,7 @@ const config: Config = {
       colors: {
         primary: "var(--clr-primary)",
         secondary: "var(--clr-secondary)",
+        accent: "var(--clr-accent)",
       },
     },
   },
