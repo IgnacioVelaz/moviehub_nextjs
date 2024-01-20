@@ -34,23 +34,17 @@ const TMDBMovieCard: FC<Props> = ({ movie, handlers }) => {
       key={movie.id}
     >
       <Link href={`/movie/${movie.id}`}>
-        <div className="absolute top-0 left-0 w-full h-full border-2 border-solid border-transparent transition-all group-hover:border-secondary" />
+        <div className="absolute top-0 left-0 w-full h-full border-2 border-solid border-transparent transition-all group-hover:grayscale" />
         {movie.poster_path && (
           <Image
             src={`${moviePoster}`}
             alt={`${movie.title} Poster`}
-            className="w-full h-auto bg-[#dbdada] rounded-md mr-4 text-transparent mb-2"
+            className="w-full h-auto bg-[#dbdada] rounded-md text-transparent hover:grayscale"
             height={150}
             width={150}
           />
         )}
-        <div>
-          <div className="p-2">
-            <h5 className="mb-2 text-xl font-medium leading-tight dark:text-neutral-50">
-              {movie.title}
-            </h5>
-          </div>
-        </div>
+        <div />
       </Link>
       <MovieControls movie={movie} handlers={handlers} />
     </div>

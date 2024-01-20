@@ -1,7 +1,7 @@
 import { getMovie } from "@/app/(main)/discover/services";
 import Container from "@/components/container/container";
 import { LuClock9 } from "react-icons/lu";
-import { monthsNames } from "@/utils/monthsNames";
+import { monthsNames } from "@/utils/months-names";
 import { MovieDetailsInterface } from "@/interfaces/MovieDetailsInterface";
 import Image from "next/image";
 import { headers } from "next/headers";

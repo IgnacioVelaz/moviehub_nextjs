@@ -6,7 +6,7 @@ import {
 } from "@/services/movie.service";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import toast from "react-hot-toast";
-import tmdbToDbMovie from "./tmdbToDbMovie";
+import tmdbToDbMovie from "./tmdb-to-db-movie";
 
 const movieFunctions = {
   moveMovie: async (

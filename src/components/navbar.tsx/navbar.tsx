@@ -5,7 +5,7 @@ import UserIcon from "./components/user-icon";
 import LogoutBtn from "./components/logout-btn";
 
 const NavBar = () => (
-  <header className="text-white">
+  <header className="text-white w-full">
     <Container>
       <div className="flex justify-between items-center py-2">
         <div className="logo">

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import movieFunctions from "@/utils/movieFunctions";
+import movieFunctions from "@/utils/movie-functions";
 import { FC, Suspense, lazy } from "react";
 import { MovieInterfaceDB } from "@/interfaces/MovieInterfaceDB";
 import MoviesGridSkeleton from "@/components/movies-grid/movies-grid-skeleton";

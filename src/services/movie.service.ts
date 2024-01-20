@@ -1,6 +1,6 @@
 "use server";
 
-import { tmdbToMongoGenresIds } from "@/utils/tmdbToMongoGenresIds";
+import { tmdbToMongoGenresIds } from "@/utils/tmdb-to-mongo-genres-ids";
 import { FormattedMovie } from "@/app/(main)/discover/models/formatted-movie-model";
 import { UserFromDatabaseType } from "@/interfaces/UserFromDatabaseInterface";
 import { getUserByEmail } from "./user.service";

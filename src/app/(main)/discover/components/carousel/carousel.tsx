@@ -3,10 +3,12 @@
 import { Pagination, A11y, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useState } from "react";
-import movieFunctions from "@/utils/movieFunctions";
+import movieFunctions from "@/utils/movie-functions";
+import { nanoid } from "nanoid";
 import { TmdbMovie } from "../../models";
 import TMDBMovieCard from "../tmdb-movie-card/tmdb-movie-card";
 
+import "./swiper.styles.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -24,8 +26,8 @@ const Carousel = ({ movies, title }: Props) => {
   };
 
   return (
-    <>
-      {swiperIsLoaded && <h2>{title}</h2>}
+    <div>
+      {swiperIsLoaded && <h2 className="uppercase text-xl mt-6">{title}</h2>}
       <Swiper
         modules={[Pagination, A11y, Navigation]}
         spaceBetween={10}
@@ -43,14 +45,14 @@ const Carousel = ({ movies, title }: Props) => {
         onSwiper={handleSwiperLoad}
       >
         {movies.map((movie) => (
-          <SwiperSlide key={movie.id}>
+          <SwiperSlide key={nanoid()}>
             {swiperIsLoaded && (
               <TMDBMovieCard movie={movie} handlers={movieFunctions} />
             )}
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 };
 
