@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
@@ -51,7 +52,7 @@ const Footer = () => (
           <i>&quot;The noblest pleasure is the joy of understanding.&quot;</i>
         </div>
         {LINKS.map(({ title, description }) => (
-          <div className="flex flex-col">
+          <div className="flex flex-col" key={nanoid()}>
             <p className="mb-3 font-medium opacity-40">{title}</p>
             {description}
           </div>

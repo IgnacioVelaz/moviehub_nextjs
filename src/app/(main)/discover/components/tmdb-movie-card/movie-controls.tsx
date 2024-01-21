@@ -1,6 +1,5 @@
 import { FaEye } from "react-icons/fa";
-import { FaEyeSlash } from "react-icons/fa6";
-import { IoCloseSharp } from "react-icons/io5";
+import { IoAddCircleSharp, IoCloseSharp } from "react-icons/io5";
 import { FC } from "react";
 import { MovieInterfaceDB } from "@/interfaces/MovieInterfaceDB";
 import { useRouter } from "next/navigation";
@@ -50,7 +49,7 @@ const MovieControls: FC<MovieControlsProps> = ({ movie, handlers }) => {
               type === "watchlist" ? "Move to watched" : "Move to watchlist"
             }
           >
-            {type === "watchlist" ? <FaEye /> : <FaEyeSlash />}
+            {type === "watchlist" ? <FaEye /> : <IoAddCircleSharp />}
           </ControlButton>
 
           <ControlButton
@@ -72,7 +71,7 @@ const MovieControls: FC<MovieControlsProps> = ({ movie, handlers }) => {
               addMovieToList(movie, "watchlist", router);
             }}
           >
-            <FaEyeSlash />
+            <IoAddCircleSharp />
           </ControlButton>
           <ControlButton
             ariaLabel="add to watched"

@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import Image from "next/image";
 import { FC } from "react";
 
@@ -23,7 +24,7 @@ const ProvidersList: FC<ProvidersListProps> = ({ data }) => {
     <div className="grid grid-cols-5 gap-3 gap-x-0 mt-4">
       {data.rent &&
         data.rent.map((option: StreamingOption) => (
-          <div className="flex justify-center">
+          <div className="flex justify-center" key={nanoid()}>
             <Image
               src={`https://image.tmdb.org/t/p/original${option.logo_path}`}
               className="w-12 rounded-md"
@@ -42,7 +43,7 @@ const ProvidersList: FC<ProvidersListProps> = ({ data }) => {
     <div className="grid grid-cols-5 gap-4 gap-x-0 mt-4">
       {data.buy &&
         data.buy.map((option: StreamingOption) => (
-          <div className="flex justify-center">
+          <div className="flex justify-center" key={nanoid()}>
             <Image
               src={`https://image.tmdb.org/t/p/original${option.logo_path}`}
               className="w-12 rounded-md"

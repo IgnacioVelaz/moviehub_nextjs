@@ -1,3 +1,5 @@
+import { nanoid } from "nanoid";
+
 const MAX_RATING = 5;
 
 const calculateRoundedRating = (average: number, maxRating: number) => {
@@ -9,7 +11,7 @@ const calculateRoundedRating = (average: number, maxRating: number) => {
 const renderStars = (maxRating: number, roundedRating: number) => (
   <ul className="flex">
     {[...Array(maxRating)].map((_, index) => (
-      <li key={index} className="text-4xl">
+      <li key={nanoid()} className="text-4xl">
         {index + 1 <= roundedRating ? "★" : "☆"}
       </li>
     ))}
