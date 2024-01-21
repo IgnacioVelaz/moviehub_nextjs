@@ -6,6 +6,7 @@ const movieDetailsToTmdb = (movie: MovieDetailsInterface) => {
     id,
     title,
     vote_average,
+    vote_count,
     genres,
     poster_path,
     adult,
@@ -32,6 +33,7 @@ const movieDetailsToTmdb = (movie: MovieDetailsInterface) => {
     popularity,
     release_date,
     video,
+    vote_count,
   };
 };
 /* eslint-enable camelcase */
