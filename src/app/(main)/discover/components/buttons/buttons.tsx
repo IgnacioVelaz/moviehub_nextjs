@@ -4,10 +4,17 @@ type ButtonProps = {
   children: ReactNode;
   onClick?: () => void;
   ariaLabel?: string;
+  disabled?: boolean;
 };
 
-const Button: FC<ButtonProps> = ({ children, onClick, ariaLabel }) => (
+const Button: FC<ButtonProps> = ({
+  children,
+  onClick,
+  ariaLabel,
+  disabled,
+}) => (
   <button
+    disabled={disabled}
     type="button"
     className="py-2
      px-4 
@@ -33,11 +40,13 @@ const Button: FC<ButtonProps> = ({ children, onClick, ariaLabel }) => (
 export const ControlButton: FC<ButtonProps> = ({
   children,
   onClick,
+  disabled = false,
   ariaLabel,
 }) => (
   <button
     type="button"
-    className="text-white text-xl p-1 transition-all hover:text-accent hover:cursor-pointer"
+    className="text-white text-xl p-1 transition-all hover:text-accent hover:cursor-pointer disabled:pointer-events-none disabled:opacity-50"
+    disabled={disabled}
     onClick={onClick}
     aria-label={ariaLabel}
   >

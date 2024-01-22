@@ -11,8 +11,6 @@ export default withPageAuthRequired(async () => {
   }
 
   const movies = res && res.movies;
-  const watchlist =
-    movies && movies.filter((movie) => movie.type === "watchlist");
 
   return (
     <div className="p-8">
@@ -22,7 +20,7 @@ export default withPageAuthRequired(async () => {
             My Watchlist
           </h1>
         </div>
-        <UserMovies movies={watchlist} />
+        <UserMovies movies={movies} type="watchlist" />
       </Container>
     </div>
   );

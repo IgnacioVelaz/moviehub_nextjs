@@ -1,9 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import movieFunctions from "@/utils/movie-functions";
-import { useRouter } from "next/navigation";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { FaEye } from "react-icons/fa";
+import tmdbToDbMovie from "@/utils/tmdb-to-db-movie";
+import { useContext } from "react";
+import { MoviesContext } from "@/context/movies-context";
+import { MovieInterfaceDB } from "@/interfaces/MovieInterfaceDB";
 import { TmdbMovie } from "../models";
 
 type Props = {
@@ -16,7 +19,23 @@ export const SearchMovieCard = ({ movie }: Props) => {
     : "https://res.cloudinary.com/dsinhkkv3/image/upload/c_thumb,w_200,g_face/v1700430158/unavailable_g9q1zp.jpg";
 
   const { addMovieToList } = movieFunctions;
-  const router = useRouter();
+
+  const { setUserMovies, userMovies } = useContext(MoviesContext);
+
+  const alreadySavedMovie = userMovies.find(
+    (contextMovie) => contextMovie.tmdb_id === movie.id,
+  );
+
+  const isDisabled = !!alreadySavedMovie;
+
+  const handleAddMovie = (movieToAdd: TmdbMovie, list: string) => {
+    const formattedMovie = tmdbToDbMovie(movie, list);
+    addMovieToList(movieToAdd, list);
+    setUserMovies((prevMovies: MovieInterfaceDB[]) => [
+      ...prevMovies,
+      formattedMovie,
+    ]);
+  };
 
   return (
     <div className="flex p-4 justify-between hover:bg-secondary">
@@ -44,9 +63,11 @@ export const SearchMovieCard = ({ movie }: Props) => {
 
       <div className="flex flex-col justify-center items-center gap-4 w-10">
         <button
+          className="disabled:opacity-50 disabled:pointer-events-none"
+          disabled={isDisabled}
           type="button"
           onClick={() => {
-            addMovieToList(movie, "watchlist", router);
+            handleAddMovie(movie, "watchlist");
           }}
           aria-label="Add to Watchlist"
         >
@@ -54,9 +75,11 @@ export const SearchMovieCard = ({ movie }: Props) => {
         </button>
 
         <button
+          className="disabled:opacity-50 disabled:pointer-events-none"
+          disabled={isDisabled}
           type="button"
           onClick={() => {
-            addMovieToList(movie, "watched", router);
+            handleAddMovie(movie, "watched");
           }}
           aria-label="Add to Watched"
         >

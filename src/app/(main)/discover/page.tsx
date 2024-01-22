@@ -5,9 +5,11 @@ import CarouselContainer from "./components/carousel/carousel-container";
 export default withPageAuthRequired(async () => (
   <>
     <Search />
-    <CarouselContainer type="popular" title="Popular" />
-    <CarouselContainer type="top_rated" title="Top Rated" />
-    <CarouselContainer type="upcoming" title="Upcoming" />
-    <CarouselContainer type="now_playing" title="On Theaters" />
+    <div className="min-h-screen">
+      <CarouselContainer type="popular" title="Popular" />
+      <CarouselContainer type="top_rated" title="Top Rated" />
+      <CarouselContainer type="upcoming" title="Upcoming" />
+      <CarouselContainer type="now_playing" title="On Theaters" />
+    </div>
   </>
 ));
