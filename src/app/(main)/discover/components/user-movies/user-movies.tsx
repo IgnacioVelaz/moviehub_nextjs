@@ -18,7 +18,8 @@ const UserMovies: FC<Props> = ({ movies, type }) => {
   const { userMovies, setUserMovies } = useMoviesContext();
 
   useEffect(() => {
-    if (!userMovies || userMovies.length === 0) setUserMovies(movies);
+    if (userMovies === null || !userMovies || userMovies.length === 0)
+      setUserMovies(movies);
   }, [userMovies]);
 
   const filteredMovies =
