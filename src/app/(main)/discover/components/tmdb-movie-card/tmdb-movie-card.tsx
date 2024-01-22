@@ -9,16 +9,8 @@ type Props = {
   movie: TmdbMovie;
   handlers: {
     /* eslint-disable no-unused-vars */
-    moveMovie: (
-      movieId: string,
-      type: string,
-      router: AppRouterInstance,
-    ) => void;
-    addMovieToList: (
-      movie: TmdbMovie,
-      type: string,
-      router: AppRouterInstance,
-    ) => void;
+    moveMovie: (movieId: string, type: string) => void;
+    addMovieToList: (movie: TmdbMovie, type: string) => void;
     deleteMovie: (movieId: string, router: AppRouterInstance) => void;
     /* eslint-enable no-unused-vars */
   };
