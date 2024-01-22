@@ -1,28 +1,13 @@
 import MovieControls from "@/app/(main)/discover/components/tmdb-movie-card/movie-controls";
-import { TmdbMovie } from "@/app/(main)/discover/models";
 import { MovieInterfaceDB } from "@/interfaces/MovieInterfaceDB";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { MovieFunctionsType } from "@/utils/movie-functions";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 
 type MovieCardProps = {
   movie: MovieInterfaceDB;
-  handlers: {
-    /* eslint-disable no-unused-vars */
-    moveMovie: (
-      movieId: string,
-      type: string,
-      router: AppRouterInstance,
-    ) => void;
-    addMovieToList: (
-      movie: TmdbMovie,
-      type: string,
-      router: AppRouterInstance,
-    ) => void;
-    deleteMovie: (movieId: string, router: AppRouterInstance) => void;
-    /* eslint-enable no-unused-vars */
-  };
+  handlers: MovieFunctionsType;
 };
 
 const UserMovieCard: FC<MovieCardProps> = ({ movie, handlers }) => (

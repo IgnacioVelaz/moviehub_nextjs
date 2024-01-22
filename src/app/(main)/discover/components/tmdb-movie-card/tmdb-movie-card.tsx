@@ -1,19 +1,13 @@
 import React, { FC } from "react";
 import Image from "next/image";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import Link from "next/link";
+import { MovieFunctionsType } from "@/utils/movie-functions";
 import { TmdbMovie } from "../../models";
 import MovieControls from "./movie-controls";
 
 type Props = {
   movie: TmdbMovie;
-  handlers: {
-    /* eslint-disable no-unused-vars */
-    moveMovie: (movieId: string, type: string) => void;
-    addMovieToList: (movie: TmdbMovie, type: string) => void;
-    deleteMovie: (movieId: string, router: AppRouterInstance) => void;
-    /* eslint-enable no-unused-vars */
-  };
+  handlers: MovieFunctionsType;
 };
 
 const TMDBMovieCard: FC<Props> = ({ movie, handlers }) => {

@@ -3,25 +3,15 @@ import { IoAddCircleSharp, IoCloseSharp } from "react-icons/io5";
 import { FC, useContext } from "react";
 import { MovieInterfaceDB } from "@/interfaces/MovieInterfaceDB";
 import { useRouter } from "next/navigation";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { MoviesContext } from "@/context/movies-context";
 import tmdbToDbMovie from "@/utils/tmdb-to-db-movie";
+import { MovieFunctionsType } from "@/utils/movie-functions";
 import { ControlButton } from "../buttons/buttons";
 import { TmdbMovie } from "../../models";
 
 type MovieControlsProps = {
   movie: MovieInterfaceDB | TmdbMovie;
-  /* eslint-disable no-unused-vars */
-  handlers: {
-    moveMovie: (
-      movieId: string,
-      type: string,
-      router: AppRouterInstance,
-    ) => void;
-    addMovieToList: (movie: TmdbMovie, type: string) => void;
-    deleteMovie: (movieId: string, router: AppRouterInstance) => void;
-  };
-  /* eslint-enable no-unused-vars */
+  handlers: MovieFunctionsType;
 };
 
 const isMovieInterfaceDB = (
@@ -43,7 +33,7 @@ const MovieControls: FC<MovieControlsProps> = ({ movie, handlers }) => {
   const isDisabled = !!alreadySavedMovie;
 
   const handleDeleteMovie = (movieId: string) => {
-    deleteMovie(movieId, router);
+    deleteMovie(movieId);
     setUserMovies((prevMovies: MovieInterfaceDB[]) =>
       prevMovies.filter(
         (item: MovieInterfaceDB) =>
