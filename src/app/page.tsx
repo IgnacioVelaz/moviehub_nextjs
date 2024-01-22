@@ -9,7 +9,7 @@ const Login = () => (
         alt="MovieMagnet logo"
         className="h-36"
         height={120}
-        width={220}
+        width={120}
       />
     </div>
     <Container>
@@ -20,7 +20,7 @@ const Login = () => (
             Tracking.
           </p>
           <a href="/api/auth/login">
-            <span className="text-3xl">Join for free</span>
+            <span className="text-3xl bg-accent">Join for free</span>
           </a>
         </div>
         <Image
