@@ -7,9 +7,8 @@ import { Toaster } from "react-hot-toast";
 import MoviesContextProvider from "@/context/movies-context";
 
 export const metadata: Metadata = {
-  title: "MovieHub",
-  description:
-    "Unlock Movie Magic with MovieHub, Your Key to Effortless Movie Tracking.",
+  title: "MovieMagnet",
+  description: "MovieMagnet: Attracting Cinematic Wonders to Your Watchlist",
 };
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => (
