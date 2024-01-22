@@ -13,6 +13,14 @@ export const metadata: Metadata = {
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => (
   <html lang="en">
+    <head>
+      <title>MovieMagnet</title>
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <link
+        rel="icon"
+        href="https://res.cloudinary.com/dsinhkkv3/image/upload/c_thumb,w_200,g_face/v1705960391/Movie_Magnet_Mixed_2_ewlins.png"
+      />
+    </head>
     <UserProvider>
       <MoviesContextProvider>
         <body
