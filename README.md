@@ -41,13 +41,13 @@ Ensure you have the following tools installed:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/yourusername/moviemagnet.git
+   git clone https://github.com/IgnacioVelaz/moviehub_nextjs.git
    ```
 
 2. Enter the project directory:
 
    ```bash
-   cd moviemagnet
+   cd moviehub_nextjs
    ```
 
 3. Install the project dependencies using pnpm:
