@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# MovieMagnet
+
+_Attracting Cinematic Wonders to Your Watchlist._
+
+## Project Overview
+
+MovieMagnet is a movies tracking app designed to empower users in discovering, tracking, and organizing their movie preferences. Users can easily find movies, save them to a watchlist, and access information about where to buy or rent them in their current location.
+
+### Key Features
+
+- **Movie Discovery:** Explore a vast collection of movies and add them to your watchlist.
+- **Watchlist Management:** Keep track of your desired movies and easily manage your watchlist.
+- **Providers Information:** Access information about where you can buy or rent movies based on your current location.
+
+## Technology Stack
+
+Built with NextJS, tmdbAPI, MongoDB, Prisma ORM, Jest, Jenkins, Vercel, and Auth0, MovieMagnet leverages a powerful stack to deliver a seamless and secure movie tracking experience.
+
+## Slogan
+
+"Discover, Track, and Explore with the MovieMagnet Magic."
+
+## Code Tactics
+
+Highlighting the innovative use of server components with server actions, MovieMagnet brings a dynamic and efficient approach to movie tracking.
 
 ## Getting Started
 
-First, run the development server:
+To get started with MovieMagnet, follow these simple steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ensure you have the following tools installed:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Node.js:** MovieMagnet runs on Node.js, so make sure it's installed on your machine.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **pnpm (Package Manager):** We use pnpm as our package manager for MovieMagnet.
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository to your local machine:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   git clone https://github.com/yourusername/moviemagnet.git
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. Enter the project directory:
 
-## Deploy on Vercel
+   ```bash
+   cd moviemagnet
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Install the project dependencies using pnpm:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```bash
+   pnpm install
+   ```
+
+### Running the App
+
+1. Start the development server:
+
+   ```bash
+   pnpm run dev
+   ```
+
+   The application will be available at [http://localhost:3000](http://localhost:3000).
+
+2. Explore MovieMagnet, discover movies, and start building your watchlist!
+
+## Engage in the Movie Journey
+
+As you embark on your cinematic journey with MovieMagnet, your feedback is invaluable. Share your thoughts, suggestions, and experiences as we continue to enhance the magic of MovieMagnet together. Your movie adventure awaits!
