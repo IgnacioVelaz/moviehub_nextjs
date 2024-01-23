@@ -5,22 +5,22 @@ const Login = () => (
   <div>
     <div className="bg-primary flex justify-center p-4 mb-24">
       <Image
-        src="https://res.cloudinary.com/dsinhkkv3/image/upload/v1700480644/Artboard_1_d1n7j7.png"
-        alt="moviehub logo"
+        src="https://res.cloudinary.com/dsinhkkv3/image/upload/v1705960391/Movie_Magnet_Mixed_2_ewlins.png"
+        alt="MovieMagnet logo"
         className="h-36"
         height={120}
-        width={220}
+        width={120}
       />
     </div>
     <Container>
       <div className="grid md:grid-cols-2 items-center gap-6 mb-16">
         <div className="flex flex-col gap-4 text-center">
           <p className="text-2xl">
-            Unlock Movie Magic with MovieHub, Your Key to Effortless Movie
+            Unlock Movie Magic with MovieMagnet, Your Key to Effortless Movie
             Tracking.
           </p>
           <a href="/api/auth/login">
-            <span className="text-3xl">Join for free</span>
+            <span className="text-3xl bg-accent">Join for free</span>
           </a>
         </div>
         <Image

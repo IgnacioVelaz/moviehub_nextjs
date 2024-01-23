@@ -1,30 +1,17 @@
 import { FaEye } from "react-icons/fa";
-import { FaEyeSlash } from "react-icons/fa6";
-import { IoCloseSharp } from "react-icons/io5";
-import { FC } from "react";
+import { IoAddCircleSharp, IoCloseSharp } from "react-icons/io5";
+import { FC, useContext } from "react";
 import { MovieInterfaceDB } from "@/interfaces/MovieInterfaceDB";
 import { useRouter } from "next/navigation";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { MoviesContext } from "@/context/movies-context";
+import tmdbToDbMovie from "@/utils/tmdb-to-db-movie";
+import { MovieFunctionsType } from "@/utils/movie-functions";
 import { ControlButton } from "../buttons/buttons";
 import { TmdbMovie } from "../../models";
 
 type MovieControlsProps = {
   movie: MovieInterfaceDB | TmdbMovie;
-  /* eslint-disable no-unused-vars */
-  handlers: {
-    moveMovie: (
-      movieId: string,
-      type: string,
-      router: AppRouterInstance,
-    ) => void;
-    addMovieToList: (
-      movie: TmdbMovie,
-      type: string,
-      router: AppRouterInstance,
-    ) => void;
-    deleteMovie: (movieId: string, router: AppRouterInstance) => void;
-  };
-  /* eslint-enable no-unused-vars */
+  handlers: MovieFunctionsType;
 };
 
 const isMovieInterfaceDB = (
@@ -37,6 +24,32 @@ const MovieControls: FC<MovieControlsProps> = ({ movie, handlers }) => {
   const type = isMovieInterfaceDB(movie) ? movie.type : "tmdb";
 
   const { addMovieToList, deleteMovie, moveMovie } = handlers;
+  const { setUserMovies, userMovies } = useContext(MoviesContext);
+
+  const alreadySavedMovie = userMovies.find(
+    (contextMovie) => contextMovie.tmdb_id === movie.id,
+  );
+
+  const isDisabled = !!alreadySavedMovie;
+
+  const handleDeleteMovie = (movieId: string) => {
+    deleteMovie(movieId);
+    setUserMovies((prevMovies: MovieInterfaceDB[]) =>
+      prevMovies.filter(
+        (item: MovieInterfaceDB) =>
+          item.tmdb_id !== (movie as MovieInterfaceDB).tmdb_id,
+      ),
+    );
+  };
+
+  const handleAddMovie = (movieToAdd: TmdbMovie, list: string) => {
+    const formattedMovie = tmdbToDbMovie(movieToAdd, list);
+    addMovieToList(movieToAdd, list);
+    setUserMovies((prevMovies: MovieInterfaceDB[]) => [
+      ...prevMovies,
+      formattedMovie,
+    ]);
+  };
 
   return (
     <div className="absolute bottom-5 inline left-1/2 -translate-x-1/2 bg-black/50 rounded-md p-1 border border-white/60 opacity-0 transition-all group-hover:opacity-100">
@@ -50,13 +63,13 @@ const MovieControls: FC<MovieControlsProps> = ({ movie, handlers }) => {
               type === "watchlist" ? "Move to watched" : "Move to watchlist"
             }
           >
-            {type === "watchlist" ? <FaEye /> : <FaEyeSlash />}
+            {type === "watchlist" ? <FaEye /> : <IoAddCircleSharp />}
           </ControlButton>
 
           <ControlButton
             ariaLabel="Delete movie"
             onClick={() => {
-              deleteMovie(movie.id, router);
+              handleDeleteMovie(movie.id);
             }}
           >
             <IoCloseSharp />
@@ -68,16 +81,18 @@ const MovieControls: FC<MovieControlsProps> = ({ movie, handlers }) => {
         <>
           <ControlButton
             ariaLabel="add to watchlist"
+            disabled={isDisabled}
             onClick={() => {
-              addMovieToList(movie, "watchlist", router);
+              handleAddMovie(movie, "watchlist");
             }}
           >
-            <FaEyeSlash />
+            <IoAddCircleSharp />
           </ControlButton>
           <ControlButton
             ariaLabel="add to watched"
+            disabled={isDisabled}
             onClick={() => {
-              addMovieToList(movie, "watched", router);
+              handleAddMovie(movie, "watched");
             }}
           >
             <FaEye />

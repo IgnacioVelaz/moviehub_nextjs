@@ -6,7 +6,7 @@ export interface MovieInterfaceDB {
   name: string;
   poster_image: string;
   score: number;
-  genres: GenreType[];
+  genres?: GenreType[];
   id: string;
   tmdb_id: number;
   type: string;

@@ -17,6 +17,8 @@
     "react/require-default-props": "off",
     "prefer-const": ["error", { "destructuring": "all" }],
     "import/no-relative-packages": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/jsx-no-constructed-context-values": "off",
     "no-restricted-globals": [
       "off",
       {

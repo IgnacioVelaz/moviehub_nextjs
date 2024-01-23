@@ -9,8 +9,10 @@ import Link from "next/link";
 import Modal from "@/components/modal/modal";
 import { FC } from "react";
 import { getCountryData } from "@/utils/get-country-data";
+import { nanoid } from "nanoid";
 import WhereToWatch from "./components/where-to-watch";
 import StarsRating from "./components/stars-rating";
+import MoviePageControlers from "./components/movie-page-controlers";
 
 type MoviePageProps = {
   params: { movieId: number };
@@ -66,10 +68,14 @@ const MoviePage: FC<MoviePageProps> = async ({ params, searchParams }) => {
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent z-10 h-96" />
         <Container>
           <section className="relative z-10 flex flex-col justify-between min-h-screen py-8 items-end">
-            <div className="flex items-center gap-1 relative top-8">
-              <StarsRating average={voteAverage} />
-              <p>({voteCount})</p>
-              {country && <p>{countryCode}</p>}
+            <div className="flex flex-col mt-8 items-end">
+              <div className="flex items-center gap-1">
+                <StarsRating average={voteAverage} />
+                <p>({voteCount})</p>
+              </div>
+              <div>
+                <MoviePageControlers movie={movieDetails} />
+              </div>
             </div>
             <div className="flex w-full justify-between items-end">
               <div className="mb-7">
@@ -77,8 +83,8 @@ const MoviePage: FC<MoviePageProps> = async ({ params, searchParams }) => {
                   {title}
                 </h1>
                 <ul className="flex gap-2">
-                  {genres.map(({ id, name }) => (
-                    <li key={id} className="text-gray-400">
+                  {genres.map(({ name }) => (
+                    <li key={nanoid()} className="text-gray-400">
                       {name}
                     </li>
                   ))}

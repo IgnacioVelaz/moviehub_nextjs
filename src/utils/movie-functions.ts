@@ -8,6 +8,14 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 import toast from "react-hot-toast";
 import tmdbToDbMovie from "./tmdb-to-db-movie";
 
+export type MovieFunctionsType = {
+  /* eslint-disable no-unused-vars */
+  moveMovie: (movieId: string, type: string, router: AppRouterInstance) => void;
+  addMovieToList: (movie: TmdbMovie, type: string) => void;
+  deleteMovie: (movieId: string) => void;
+  /* eslint-enable no-unused-vars */
+};
+
 const movieFunctions = {
   moveMovie: async (
     movieId: string,
@@ -24,20 +32,14 @@ const movieFunctions = {
     toast.success("Movie moved successfully");
   },
 
-  deleteMovie: async (movieId: string, router: AppRouterInstance) => {
+  deleteMovie: async (movieId: string) => {
     await deleteMovieById(movieId);
-    await router.refresh();
     toast.success("Movie removed successfully");
   },
 
-  addMovieToList: async (
-    movie: TmdbMovie,
-    list: string,
-    router: AppRouterInstance,
-  ) => {
+  addMovieToList: async (movie: TmdbMovie, list: string) => {
     const formattedMovie = tmdbToDbMovie(movie, list);
     await addMovie(formattedMovie);
-    await router.refresh();
     toast.success("Movie added!");
   },
 };
