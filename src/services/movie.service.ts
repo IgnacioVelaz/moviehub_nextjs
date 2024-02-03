@@ -1,7 +1,7 @@
 "use server";
 
 import { tmdbToMongoGenresIds } from "@/utils/tmdb-to-mongo-genres-ids";
-import { FormattedMovie } from "@/app/(main)/discover/models/formatted-movie-model";
+import { FormattedMovie } from "@/app/models/formatted-movie-model";
 import { UserFromDatabaseType } from "@/interfaces/UserFromDatabaseInterface";
 import { getUserByEmail } from "./user.service";
 import { PrismaClient } from "../../prisma/generated/mongodb_client";

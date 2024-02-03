@@ -1,6 +1,6 @@
 "use server";
 
-import { TmdbMovie } from "../models";
+import { TmdbMovie } from "../app/models";
 
 const apiKey = process.env.NEXT_PUBLIC_TMDB_KEY;
 const baseURL = "https://api.themoviedb.org/3/movie/";

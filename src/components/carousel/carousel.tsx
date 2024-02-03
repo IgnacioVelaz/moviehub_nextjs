@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useState } from "react";
 import movieFunctions from "@/utils/movie-functions";
 import { nanoid } from "nanoid";
-import { TmdbMovie } from "../../models";
+import { TmdbMovie } from "../../app/models";
 import TMDBMovieCard from "../tmdb-movie-card/tmdb-movie-card";
 
 import "./swiper.styles.css";

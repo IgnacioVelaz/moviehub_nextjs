@@ -1,5 +1,5 @@
 import { FC, Suspense, lazy } from "react";
-import { getMovies } from "../../services";
+import { getMovies } from "@/services/tmdb.service";
 import CarouselSkeletor from "./carousel-skeletor";
 
 type CarouselContainerProps = {

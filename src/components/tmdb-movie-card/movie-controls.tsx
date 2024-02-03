@@ -7,7 +7,7 @@ import { MoviesContext } from "@/context/movies-context";
 import tmdbToDbMovie from "@/utils/tmdb-to-db-movie";
 import { MovieFunctionsType } from "@/utils/movie-functions";
 import { ControlButton } from "../buttons/buttons";
-import { TmdbMovie } from "../../models";
+import { TmdbMovie } from "../../app/models";
 
 type MovieControlsProps = {
   movie: MovieInterfaceDB | TmdbMovie;

@@ -1,5 +1,5 @@
-import { getStreamingOptions } from "@/app/(main)/discover/services";
 import { UserCountry } from "@/utils/get-country-data";
+import { getStreamingOptions } from "@/services/tmdb.service";
 import ProvidersList from "./providers-list";
 
 type WhereTowatchProps = {

@@ -2,9 +2,9 @@
 
 import { ChangeEvent, KeyboardEventHandler, useState } from "react";
 import { nanoid } from "nanoid";
+import { searchMovies } from "@/services/tmdb.service";
 import { SearchMovieCard } from "../search-movie-card";
-import { TmdbMovie } from "../../models";
-import { searchMovies } from "../../services";
+import { TmdbMovie } from "../../app/models";
 import "./search.css";
 
 const Search = () => {

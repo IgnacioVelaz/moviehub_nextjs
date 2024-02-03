@@ -1,6 +1,6 @@
 "use client";
 
-import { TmdbMovie } from "@/app/(main)/discover/models";
+import { TmdbMovie } from "@/app/models";
 import { MoviesContext } from "@/context/movies-context";
 import { MovieDetailsInterface } from "@/interfaces/MovieDetailsInterface";
 import { MovieInterfaceDB } from "@/interfaces/MovieInterfaceDB";

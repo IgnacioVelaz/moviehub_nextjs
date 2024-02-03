@@ -1,4 +1,4 @@
-import Button from "@/app/(main)/discover/components/buttons/buttons";
+import Button from "@/components/buttons/buttons";
 import { render } from "@testing-library/react";
 
 describe("button", () => {

@@ -1,4 +1,4 @@
-import { TmdbMovie } from "@/app/(main)/discover/models";
+import { TmdbMovie } from "@/app/models";
 
 const tmdbToDbMovie = (movie: TmdbMovie, list: string) => {
   const moviePoster = movie.poster_path

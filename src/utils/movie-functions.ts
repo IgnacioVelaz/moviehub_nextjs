@@ -1,4 +1,4 @@
-import { TmdbMovie } from "@/app/(main)/discover/models";
+import { TmdbMovie } from "@/app/models";
 import {
   addMovie,
   deleteMovieById,

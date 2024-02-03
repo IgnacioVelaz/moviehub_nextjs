@@ -12,7 +12,7 @@ const NavLinks = () => {
   const links = [
     { name: "Watchlist", href: "/watchlist", icon: <IoAddCircleSharp /> },
     { name: "Watched", href: "/watched", icon: <FaEye /> },
-    { name: "Discover", href: "/discover", icon: <FaSearch /> },
+    { name: "Discover", href: "/", icon: <FaSearch /> },
   ];
 
   return (

@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MovieFunctionsType } from "@/utils/movie-functions";
-import { TmdbMovie } from "../../models";
+import { TmdbMovie } from "../../app/models";
 import MovieControls from "./movie-controls";
 
 type Props = {

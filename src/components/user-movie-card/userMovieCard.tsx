@@ -1,4 +1,4 @@
-import MovieControls from "@/app/(main)/discover/components/tmdb-movie-card/movie-controls";
+import MovieControls from "@/components/tmdb-movie-card/movie-controls";
 import { MovieInterfaceDB } from "@/interfaces/MovieInterfaceDB";
 import { MovieFunctionsType } from "@/utils/movie-functions";
 import Image from "next/image";

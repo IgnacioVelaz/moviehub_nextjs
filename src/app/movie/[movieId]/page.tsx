@@ -1,4 +1,3 @@
-import { getMovie } from "@/app/(main)/discover/services";
 import Container from "@/components/container/container";
 import { LuClock9 } from "react-icons/lu";
 import { monthsNames } from "@/utils/months-names";
@@ -10,6 +9,7 @@ import Modal from "@/components/modal/modal";
 import { FC } from "react";
 import { getCountryData } from "@/utils/get-country-data";
 import { nanoid } from "nanoid";
+import { getMovie } from "@/services/tmdb.service";
 import WhereToWatch from "./components/where-to-watch";
 import StarsRating from "./components/stars-rating";
 import MoviePageControlers from "./components/movie-page-controlers";

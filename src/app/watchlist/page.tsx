@@ -1,7 +1,7 @@
 import Container from "@/components/container/container";
 import { getUserMovies } from "@/services/movie.service";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-import UserMovies from "../discover/components/user-movies/user-movies";
+import UserMovies from "../../components/user-movies/user-movies";
 
 export default withPageAuthRequired(async () => {
   const res = await getUserMovies();

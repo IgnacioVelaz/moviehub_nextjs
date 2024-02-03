@@ -7,7 +7,7 @@ import tmdbToDbMovie from "@/utils/tmdb-to-db-movie";
 import { useContext } from "react";
 import { MoviesContext } from "@/context/movies-context";
 import { MovieInterfaceDB } from "@/interfaces/MovieInterfaceDB";
-import { TmdbMovie } from "../models";
+import { TmdbMovie } from "../app/models";
 
 type Props = {
   movie: TmdbMovie;
