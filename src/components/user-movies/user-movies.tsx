@@ -37,7 +37,7 @@ const UserMovies: FC<Props> = ({ movies, type }) => {
             You haven&apos;t seen any movies yet? 😨. Go watch some! 📽
           </h2>
           <div className="text-center">
-            <Link href="/discover">
+            <Link href="/">
               <button type="button">
                 <span className="text-3xl">Add Movie</span>
               </button>

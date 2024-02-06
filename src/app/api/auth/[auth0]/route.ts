@@ -5,6 +5,6 @@ export const GET = handleAuth({
     authorizationParams: {
       audience: "http://localhost:8081",
     },
-    returnTo: "/discover",
+    returnTo: "/",
   }),
 });
